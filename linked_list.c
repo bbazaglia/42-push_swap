@@ -34,6 +34,8 @@ void clear_stack(t_stack *stack)
 {
 	t_stack *tmp;
 
+	if (!stack)
+		return ;
 	while (stack)
 	{
 		tmp = stack->next;
@@ -46,6 +48,8 @@ int stack_size(t_stack *stack)
 {
 	int i;
 
+	if (!stack)
+		return (0);
 	i = 0;
 	while (stack)
 	{
@@ -53,4 +57,13 @@ int stack_size(t_stack *stack)
 		i++;
 	}
 	return (i);
+}
+
+t_stack *stack_tail(t_stack *stack)
+{
+	if (!stack)
+		return (NULL);
+	while (stack->next)
+		stack = stack->next;
+	return (stack);
 }
