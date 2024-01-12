@@ -14,7 +14,7 @@ void is_sorted(t_stack *stack)
       prev_node = stack;
       stack = stack->next;
   }
-  if (i > 0)
+  if (i == 0)
   {
       // call function to clear nodes
       print_error();
