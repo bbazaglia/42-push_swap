@@ -2,7 +2,7 @@
 
 void	check_input(int argc, char **argv)
 {
-	int i;
+	int	i;
 
 	i = 1;
 	if (argc == 1)
@@ -17,29 +17,29 @@ void	check_input(int argc, char **argv)
 
 void	check_characters(char *argv)
 {
-	if (!(*argv == '+' || *argv == '-' || (*argv >= '0' && *argv <= '9')))
+	if (*argv != '+' && *argv != '-' && !isdigit(*argv))
 		print_error();
-	if ((*argv == '+' || *argv == '-') && !(*argv + 1) >= '0' && (*argv + 1) <= '9')
+	if ((*argv == '+' || *argv == '-') && !isdigit(*(argv + 1)))
 		print_error();
 	while (*++argv)
 	{
-		if (!(*argv >= '0' && *argv <= '9'))
+		if (!isdigit(*argv))
 			print_error();
 	}
 }
 
-void check_limit(char *argv)
+void	check_limit(char *argv)
 {
-	int n;
+	int	n;
 
 	n = ft_atol(argv);
 	if (n > INT_MAX || n < INT_MIN)
 		print_error();
 }
 
-void check_double(t_stack *stack)
+void	check_double(t_stack *stack)
 {
-	t_stack *tmp;
+	t_stack	*tmp;
 
 	while (stack)
 	{
@@ -54,7 +54,7 @@ void check_double(t_stack *stack)
 	}
 }
 
-void print_error(void)
+void	print_error(void)
 {
 	write(2, "Error\n", 6);
 	exit(1);

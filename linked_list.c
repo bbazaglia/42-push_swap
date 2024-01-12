@@ -30,4 +30,14 @@ t_stack	*initialize_stack(int argc, char **argv)
 	return (head);
 }
 
+void clear_stack(t_stack *stack)
+{
+	t_stack *tmp;
 
+	while (stack)
+	{
+		tmp = stack->next;
+		free(stack);
+		stack = tmp;
+	}
+}
