@@ -41,9 +41,12 @@ void	check_double(t_stack *stack)
 {
 	t_stack	*tmp;
 
+	// move to the next element (while there are elements in the stack)
 	while (stack)
 	{
 		tmp = stack->next;
+
+		// compare the current element with every subsequent element (while there's a subsequent element to be compared)
 		while (tmp)
 		{
 			if (stack->value == tmp->value)

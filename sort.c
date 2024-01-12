@@ -20,3 +20,4 @@ void	is_sorted(t_stack *stack)
 		print_error();
 	}
 }
+

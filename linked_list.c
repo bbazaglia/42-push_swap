@@ -13,10 +13,10 @@ t_stack	*initialize_stack(int argc, char **argv)
 	i = 1;
 	while (i < argc)
 	{
-		value = atoi(argv[i]);
+		value = atol(argv[i]);
 		new_node = (t_stack *)malloc(sizeof(t_stack));
 		if (!new_node)
-			return (NULL);
+			print_error();
 		new_node->value = value;
 		new_node->next = NULL;
 		new_node->prev = tail;
@@ -40,4 +40,17 @@ void clear_stack(t_stack *stack)
 		free(stack);
 		stack = tmp;
 	}
+}
+
+int stack_size(t_stack *stack)
+{
+	int i;
+
+	i = 0;
+	while (stack)
+	{
+		stack = stack->next;
+		i++;
+	}
+	return (i);
 }
