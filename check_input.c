@@ -37,14 +37,18 @@ void check_limit(char *argv)
 		print_error();
 }
 
-void check_double(t_stack *stack, int n)
+void check_double(t_stack *stack)
 {
+	t_stack *tmp;
+
 	while (stack)
 	{
-		if (stack->value == n)
+		tmp = stack->next;
+		while (tmp)
 		{
-			// free stack
-			print_error();
+			if (stack->value == tmp->value)
+				print_error();
+			tmp = tmp->next;
 		}
 		stack = stack->next;
 	}

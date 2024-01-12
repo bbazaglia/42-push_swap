@@ -8,18 +8,12 @@ int	main(int argc, char **argv)
 	stack_a = NULL;
 	stack_b = NULL;
 
-	// first part: check if the input is correct
 	check_input(argc, argv);
-	
-	// second part: create the stack
+	stack_a = initialize_stack(argc, argv);
+	check_double(stack_a);
 
 	// third part: sort the stack
-	// check if the stack is sorted
-	// if not, sort it
 
 	return (0);
 }
 
-// put stuff in the stack: push
-
-// take stuff out of the stack: pop
