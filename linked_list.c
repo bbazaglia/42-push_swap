@@ -1,69 +1,67 @@
 #include "push_swap.h"
 
-t_stack	*initialize_stack(int argc, char **argv)
+t_stack_list	*create_stack(int argc, char **argv)
 {
-	t_stack	*head;
-	t_stack	*tail;
-	int		i;
-	int		value;
-	t_stack	*new_node;
+	t_stack_list	*stack;
+	int				i;
+	int				value;
 
-	head = NULL;
-	tail = NULL;
+	stack = (t_stack_list *)malloc(sizeof(t_stack_list));
+	stack->head = NULL;
+	stack->tail = NULL;
 	i = 1;
 	while (i < argc)
 	{
 		value = atol(argv[i]);
-		new_node = (t_stack *)malloc(sizeof(t_stack));
-		if (!new_node)
-			print_error();
-		new_node->value = value;
-		new_node->next = NULL;
-		new_node->prev = tail;
-		if (tail)
-			tail->next = new_node;
-		tail = new_node;
-		if (!head)
-			head = new_node;
+		add_node(stack, value);
 		i++;
 	}
-	return (head);
+	return (stack);
 }
 
-void clear_stack(t_stack *stack)
+void	add_node(t_stack_list *stack, int value)
 {
-	t_stack *tmp;
+	t_stack_node	*new_node;
+
+	new_node = (t_stack_node *)malloc(sizeof(t_stack_node));
+	if (!new_node)
+		print_error();
+	new_node->value = value;
+	new_node->next = NULL;
+	new_node->prev = stack->tail;
+	if (stack->tail)
+		stack->tail->next = new_node;
+	stack->tail = new_node;
+	if (!stack->head)
+		stack->head = new_node;
+}
+
+void clear_stack(t_stack_list *stack)
+{
+	t_stack_node	*tmp;
 
 	if (!stack)
 		return ;
-	while (stack)
+	while (stack->head)
 	{
-		tmp = stack->next;
-		free(stack);
-		stack = tmp;
+		tmp = stack->head->next;
+		free(stack->head);
+		stack->head = tmp;
 	}
+	free(stack);
 }
 
-int stack_size(t_stack *stack)
+int stack_length(t_stack_list *stack)
 {
-	int i;
+	int				length;
+	t_stack_node	*tmp;
 
-	if (!stack)
-		return (0);
-	i = 0;
-	while (stack)
+	length = 0;
+	tmp = stack->head;
+	while (tmp)
 	{
-		stack = stack->next;
-		i++;
+		length++;
+		tmp = tmp->next;
 	}
-	return (i);
-}
-
-t_stack *stack_tail(t_stack *stack)
-{
-	if (!stack)
-		return (NULL);
-	while (stack->next)
-		stack = stack->next;
-	return (stack);
+	return (length);
 }

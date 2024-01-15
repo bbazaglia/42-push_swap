@@ -1,52 +1,60 @@
 #include "push_swap.h"
 
-void	pb(t_stack **stack_a, t_stack **stack_b)
+void pb (t_stack_list *stack_a, t_stack_list *stack_b)
 {
-	int	first_value;
+	int		value;
 
-	first_value = pop(stack_a);
-	push(stack_b, first_value);
+	if (!stack_a->head)
+		return ;
+	value = pop_node(stack_a);
+	push_node(stack_b, value);
+	write(1, "pb\n", 3);
 }
 
-void	pa(t_stack **stack_a, t_stack **stack_b)
+void pa (t_stack_list *stack_a, t_stack_list *stack_b)
 {
-	int	first_value;
+	int		value;
 
-	first_value = pop(stack_b);
-	push(stack_a, first_value);
+	if (!stack_b->head)
+		return ;
+	value = pop_node(stack_b);
+	push_node(stack_a, value);
+	write(1, "pa\n", 3);
 }
 
 // push a new element onto the front of the stack
-void	push(t_stack **head, int value)
+void push_node(t_stack_list *stack, int value)
 {
-	t_stack	*new_node;
+	t_stack_node	*new_node;
 
-	new_node = (t_stack *)malloc(sizeof(t_stack));
+	new_node = (t_stack_node *)malloc(sizeof(t_stack_node));
 	if (!new_node)
 		print_error();
 	new_node->value = value;
-	new_node->next = *head;
+	new_node->next = stack->head;
 	new_node->prev = NULL;
-	if (*head)
-		(*head)->prev = new_node;
-	*head = new_node;
+	if (stack->head)
+		stack->head->prev = new_node;
+	else if (!stack->tail)
+		stack->tail = new_node;
+	stack->head = new_node;
 }
 
 // remove the first element from the stack and return its value
-int	pop(t_stack **head)
+int	pop_node(t_stack_list *stack)
 {
-	int		popped_value;
-	t_stack	*popped_node;
+	int				popped_value;
+	t_stack_node	*popped_node;
 
-	if (!*head)
+	if (!stack->head)
 		print_error();
-	popped_value = (*head)->value;
-	popped_node = *head;
-	*head = (*head)->next;
-	if (*head)
-		(*head)->prev = NULL;
+	popped_value = stack->head->value;
+	popped_node = stack->head;
+	stack->head = stack->head->next;
+	if (stack->head)
+		stack->head->prev = NULL;
 	else
-		*head = NULL;
+		stack->tail = NULL;
 	free(popped_node);
 	popped_node = NULL;
 	return (popped_value);
