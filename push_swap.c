@@ -2,18 +2,16 @@
 
 int	main(int argc, char **argv)
 {
-	t_stack	*stack_a;
-	t_stack	*stack_b;
+	t_stack_list	*stack_a;
+	t_stack_list	*stack_b;
 
 	stack_a = NULL;
 	stack_b = NULL;
 
 	check_input(argc, argv);
-	stack_a = initialize_stack(argc, argv);
+	stack_a = create_stack(argc, argv);
 	check_double(stack_a);
-
-	// third part: sort the stack
-
+	sort_stack(stack_a);
 	return (0);
 }
 

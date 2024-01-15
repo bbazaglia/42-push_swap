@@ -5,9 +5,9 @@ void	check_input(int argc, char **argv)
 	int	i;
 
 	i = 1;
-	if (argc == 1)
-		exit(0);
-	while (argv)
+	if (argc < 3)
+		print_error();
+	while (i < argc)
 	{
 		check_characters(argv[i]);
 		check_limit(argv[i]);
@@ -17,13 +17,13 @@ void	check_input(int argc, char **argv)
 
 void	check_characters(char *argv)
 {
-	if (*argv != '+' && *argv != '-' && !isdigit(*argv))
+	if (*argv != '+' && *argv != '-' && ft_isdigit(*argv) == 0)
 		print_error();
-	if ((*argv == '+' || *argv == '-') && !isdigit(*(argv + 1)))
+	if ((*argv == '+' || *argv == '-') && ft_isdigit(*(argv + 1)) == 0)
 		print_error();
 	while (*++argv)
 	{
-		if (!isdigit(*argv))
+		if (ft_isdigit(*argv) == 0)
 			print_error();
 	}
 }
