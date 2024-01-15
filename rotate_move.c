@@ -9,23 +9,21 @@ void rotate(t_stack_list *stack)
    if (stack->head == NULL || stack->head->next == NULL)
        return;
 
-   // store the first node in the temporary pointer
+   // tmp stores the first node
    tmp = stack->head;
 
-   // move the head pointer to the second node
+   // the second node becomes the new first
    stack->head = stack->head->next;
 
-   // disconnect the first node from the rest of the list
+   // break the connection between the first node and the rest of the stack
    stack->head->prev = NULL;
 
-   // connect the first node to the end of the list
-   stack->tail->next = tmp;
-   tmp->prev = stack->tail;
-
-   // disconnect the first node from the rest of the list again
+   // the "old first" node becomes the last one 
+   stack->tail->next = tmp; 
+   tmp->prev = stack->tail; 
    tmp->next = NULL;
 
-   // update the tail pointer to the first node
+   // update the tail pointer
    stack->tail = tmp;
 }
 
