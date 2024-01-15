@@ -1,18 +1,20 @@
 #include "push_swap.h"
 
-void	is_sorted(t_stack *stack)
+void	is_sorted(t_stack_list *stack)
 {
 	int		i;
-	t_stack	*prev_node;
+	t_stack_node	*prev_node;
+	t_stack_node	*tmp;
 
 	i = 0;
 	prev_node = NULL;
-	while (stack)
+	tmp = stack->head;
+	while (tmp)
 	{
-		if (prev_node && stack->value < prev_node->value)
+		if (prev_node && tmp->value < prev_node->value)
 			i++;
-		prev_node = stack;
-		stack = stack->next;
+		prev_node = tmp;
+		tmp = tmp->next;
 	}
 	if (i == 0)
 	{

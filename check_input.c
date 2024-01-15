@@ -37,23 +37,22 @@ void	check_limit(char *argv)
 		print_error();
 }
 
-void	check_double(t_stack *stack)
+void	check_double(t_stack_list *stack)
 {
-	t_stack	*tmp;
+	t_stack_node	*tmp;
+	t_stack_node	*tmp2;
 
-	// move to the next element (while there are elements in the stack)
-	while (stack)
+	tmp = stack->head;
+	while (tmp)
 	{
-		tmp = stack->next;
-
-		// compare the current element with every subsequent element (while there's a subsequent element to be compared)
-		while (tmp)
+		tmp2 = tmp->next;
+		while (tmp2)
 		{
-			if (stack->value == tmp->value)
+			if (tmp->value == tmp2->value)
 				print_error();
-			tmp = tmp->next;
+			tmp2 = tmp2->next;
 		}
-		stack = stack->next;
+		tmp = tmp->next;
 	}
 }
 
