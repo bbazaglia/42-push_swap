@@ -2,11 +2,16 @@
 
 void	sort_stack(t_stack_list *stack)
 {
+	int	len;
+
 	is_sorted(stack);
-	if (stack_length(stack) <= 3)
+	len = stack_length(stack);
+	if (len == 2)
+		sa(stack);
+	else if (stack_length(stack) == 3)
 		sort_three(stack);
 	// else
-		// sort_numbers(stack);
+	// sort_numbers(stack);
 }
 
 void	is_sorted(t_stack_list *stack)
@@ -35,6 +40,19 @@ void	is_sorted(t_stack_list *stack)
 
 void	sort_three(t_stack_list *stack)
 {
+	if (stack->head->value > stack->head->next->value
+		&& stack->head->value > stack->head->next->next->value)
+		ra(stack);
+	else if (stack->head->next->value > stack->head->value
+			&& stack->head->next->value > stack->head->next->next->value)
+		rra(stack);
+	if (stack->head->value > stack->head->next->value)
+		sa(stack);
+}
+
+/* this function does not update the pointers correctly
+void	sort_three(t_stack_list *stack)
+{
 	t_stack_node	*first;
 	t_stack_node	*second;
 	t_stack_node	*third;
@@ -53,8 +71,8 @@ void	sort_three(t_stack_list *stack)
 		if (first > second)
 			sa(stack);
 	}
-	is_sorted(stack);
 }
+*/
 
 // void	sort_numbers(t_stack_list *stack)
 // {
