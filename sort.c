@@ -34,7 +34,7 @@ int	is_sorted(t_stack_list *stack)
 	return (1);
 }
 
-// instead of using the value, it would be possible to use the target position of the node
+// instead of using the value, it would be possible to use the index
 void	sort_three(t_stack_list *stack)
 {
 	if (stack->head->value > stack->head->next->value
@@ -52,7 +52,7 @@ void	sort_bigger(t_stack_list *stack_a, t_stack_list *stack_b, int length_a)
 	// pb all elements from stack A, except three.
 	while (length_a > 3)
 	{
-		if (stack_a->head->target_pos < length_a / 2)
+		if (stack_a->head->index < length_a / 2)
 			pb(stack_a, stack_b);
 		else
 			ra(stack_a);

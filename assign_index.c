@@ -1,11 +1,11 @@
 #include "push_swap.h"
 
-void	assign_positions(t_stack_list *stack)
+void	assign_index(t_stack_list *stack)
 {
 	t_stack_list	*temp_stack;
 	t_stack_node	*current_node;
 	int				current_pos;
-	int				target_pos;
+	int				index;
 
 	// create a temporary stack
 	temp_stack = (t_stack_list *)malloc(sizeof(t_stack_list));
@@ -27,12 +27,12 @@ void	assign_positions(t_stack_list *stack)
 		current_node = current_node->next;
 	}
 
-	// assign target_pos based on sorted position in the temporary stack
-	target_pos = 1;
+	// assign index based on sorted position in the temporary stack
+	index = 1;
 	current_node = temp_stack->head;
 	while (current_node != NULL)
 	{
-		current_node->target_pos = target_pos++;
+		current_node->index = index++;
 		current_node = current_node->next;
 	}
 
@@ -102,7 +102,7 @@ void	find_middle_and_split(t_stack_node *source, t_stack_node **front_ref, t_sta
 	// split the list into two halves
 	*front_ref = source;
 	*back_ref = slow->next;
-	
+
 	// break the link between the two halves
 	slow->next = NULL;
 }

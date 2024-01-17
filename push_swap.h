@@ -3,11 +3,24 @@
 #include <stdlib.h>
 #include <unistd.h>
 
+/* difference between current_pos, target_pos and index:
+
+** current_pos: current position of a node within its respective stack
+
+** index: the final desired position for the node in the sorted stack_a
+
+** target_pos: the position in stack A where an element from stack B should be placed
+- base case: the position of the element with the closest smaller index in stack A is the target position for the element in stack B.
+- special case: if an element in stack B has a higher index than all elements in stack A, 
+its target position is the position of the element with the smallest index in stack A.
+*/
+
 typedef struct s_stack_node
 {
 	int					value;
 	int					current_pos;
 	int					target_pos;
+	int					index;
 	int					cost_a;
 	int					cost_b;
 	struct s_stack_node	*next;
@@ -34,8 +47,9 @@ void					add_node(t_stack_list *stack, int value);
 void					clear_stack(t_stack_list *stack);
 int						stack_length(t_stack_list *stack);
 
-// asign the current and target position of the nodes in the stack
-void	assign_positions(t_stack_list *stack);
+//
+
+void					assign_index(t_stack_list *stack);
 void					copy_stack(t_stack_list *src, t_stack_list *dest);
 t_stack_node			*merge_sorted_lists(t_stack_node *a, t_stack_node *b);
 void					find_middle_and_split(t_stack_node *source, t_stack_node **front_ref, t_stack_node **back_ref);
