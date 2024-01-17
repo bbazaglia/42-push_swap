@@ -35,10 +35,10 @@ void					clear_stack(t_stack_list *stack);
 int						stack_length(t_stack_list *stack);
 
 // asign the current and target position of the nodes in the stack
-void					assign_position(t_stack_list *stack);
+void	assign_positions(t_stack_list *stack);
+void					copy_stack(t_stack_list *src, t_stack_list *dest);
 t_stack_node			*merge_sorted_lists(t_stack_node *a, t_stack_node *b);
-void					find_middle_and_split(t_stack_node *source,
-							t_stack_node **front_ref, t_stack_node **back_ref);
+void					find_middle_and_split(t_stack_node *source, t_stack_node **front_ref, t_stack_node **back_ref);
 void					merge_sort(t_stack_node **head_ref);
 
 // operations
@@ -60,10 +60,11 @@ void					sb(t_stack_list *stack_b);
 void					ss(t_stack_list *stack_a, t_stack_list *stack_b);
 
 // sort algorithms
-void					sort_stack(t_stack_list *stack_a,
-							t_stack_list *stack_b);
+void					sort_stack(t_stack_list *stack_a, t_stack_list *stack_b);
 int						is_sorted(t_stack_list *stack);
 void					sort_three(t_stack_list *stack);
+void					sort_bigger(t_stack_list *stack_a, t_stack_list *stack_b, int length_a);
+
 
 // utils
 long					ft_atol(char *str);

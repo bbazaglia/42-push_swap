@@ -17,7 +17,7 @@ void	sort_stack(t_stack_list *stack_a, t_stack_list *stack_b)
 	else if (len == 3)
 		sort_three(stack_a);
 	else
-		sort(stack_a, stack_b, len);
+		sort_bigger(stack_a, stack_b, len);
 }
 
 int	is_sorted(t_stack_list *stack)
@@ -47,7 +47,7 @@ void	sort_three(t_stack_list *stack)
 		sa(stack);
 }
 
-void	sort(t_stack_list *stack_a, t_stack_list *stack_b, int length_a)
+void	sort_bigger(t_stack_list *stack_a, t_stack_list *stack_b, int length_a)
 {
 	// pb all elements from stack A, except three.
 	while (length_a > 3)

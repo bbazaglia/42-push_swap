@@ -5,7 +5,7 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror -g3
 
 SRC = push_swap.c \
-		assign_position.c
+		assign_position.c \
 		check_input.c \
 		linked_list.c \
 		push_move.c \
