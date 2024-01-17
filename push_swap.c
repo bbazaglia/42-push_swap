@@ -11,7 +11,9 @@ int	main(int argc, char **argv)
 	check_input(argc, argv);
 	stack_a = create_stack(argc, argv);
 	check_double(stack_a);
-	sort_stack(stack_a);
+    stack_b = create_stack(0, NULL);
+	assign_position(stack_a);
+	sort_stack(stack_a, stack_b);
 	return (0);
 }
 

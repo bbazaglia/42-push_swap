@@ -7,11 +7,14 @@ typedef struct s_stack_node
 {
 	int					value;
 	int					current_pos;
+	int					target_pos;
+	int					cost_a;
+	int					cost_b;
 	struct s_stack_node	*next;
 	struct s_stack_node	*prev;
 }						t_stack_node;
 
-// everytime is perfomed an operation that modifies the list, update the head or tail pointer as necessary
+// everytime is perfomed an operation that modifies the list, update the head and tail pointer as necessary
 typedef struct s_stack_list
 {
 	t_stack_node		*head;
@@ -30,6 +33,13 @@ t_stack_list			*create_stack(int argc, char **argv);
 void					add_node(t_stack_list *stack, int value);
 void					clear_stack(t_stack_list *stack);
 int						stack_length(t_stack_list *stack);
+
+// asign the current and target position of the nodes in the stack
+void					assign_position(t_stack_list *stack);
+t_stack_node			*merge_sorted_lists(t_stack_node *a, t_stack_node *b);
+void					find_middle_and_split(t_stack_node *source,
+							t_stack_node **front_ref, t_stack_node **back_ref);
+void					merge_sort(t_stack_node **head_ref);
 
 // operations
 void					push_node(t_stack_list *stack, int value);
@@ -50,10 +60,10 @@ void					sb(t_stack_list *stack_b);
 void					ss(t_stack_list *stack_a, t_stack_list *stack_b);
 
 // sort algorithms
-void					sort_stack(t_stack_list *stack);
-void					is_sorted(t_stack_list *stack);
+void					sort_stack(t_stack_list *stack_a,
+							t_stack_list *stack_b);
+int						is_sorted(t_stack_list *stack);
 void					sort_three(t_stack_list *stack);
-// void					sort_numbers(t_stack_list *stack);
 
 // utils
 long					ft_atol(char *str);
