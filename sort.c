@@ -36,13 +36,13 @@ int	is_sorted(t_stack_list *stack)
 
 void	sort_three(t_stack_list *stack)
 {
-	if (stack->head->index > stack->head->next->index
-		&& stack->head->index > stack->head->next->next->index)
+	if (stack->head->value > stack->head->next->value
+		&& stack->head->value > stack->head->next->next->value)
 		ra(stack);
-	else if (stack->head->next->index > stack->head->index
-			&& stack->head->next->index > stack->head->next->next->index)
+	else if (stack->head->next->value > stack->head->value
+			&& stack->head->next->value > stack->head->next->next->value)
 		rra(stack);
-	if (stack->head->index > stack->head->next->index)
+	if (stack->head->value > stack->head->next->value)
 		sa(stack);
 }
 
@@ -72,6 +72,6 @@ void	sort_bigger(t_stack_list *stack_a, t_stack_list *stack_b, int length_a)
 		// Execute the sequence of actions needed to move the element from stack B to stack A
 	
 	}
-	if (is_sorted(stack_a) == 0)
+	// if (is_sorted(stack_a) == 0)
 		// If stack A is not sorted, chose between ra and rra to rotate it into ascending order
 }
