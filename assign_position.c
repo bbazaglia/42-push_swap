@@ -52,18 +52,18 @@ void	copy_stack(t_stack_list *src, t_stack_list *dest)
 	}
 }
 
-// Implement merge_sort and other helper functions for merge sort here...
-
 t_stack_node	*merge_sorted_lists(t_stack_node *a, t_stack_node *b)
 {
 	t_stack_node	*result;
 
 	result = NULL;
+
 	// base cases: if the one list is empty, return the other list
 	if (a == NULL)
 		return (b);
 	else if (b == NULL)
 		return (a);
+
 	// compare values and merge the lists in ascending order
 	if (a->value < b->value)
 	{
@@ -75,6 +75,7 @@ t_stack_node	*merge_sorted_lists(t_stack_node *a, t_stack_node *b)
 		result = b;
 		result->next = merge_sorted_lists(a, b->next);
 	}
+
 	// return the merged result
 	return (result);
 }
@@ -86,6 +87,7 @@ void	find_middle_and_split(t_stack_node *source, t_stack_node **front_ref, t_sta
 
 	slow = source;
 	fast = source->next;
+
 	// when fast reaches the end, slow will be at the middle (or middle-left node, in case the list has an even number of nodes)
 	while (fast != NULL)
 	{
@@ -96,9 +98,11 @@ void	find_middle_and_split(t_stack_node *source, t_stack_node **front_ref, t_sta
 			fast = fast->next;
 		}
 	}
+
 	// split the list into two halves
 	*front_ref = source;
 	*back_ref = slow->next;
+	
 	// break the link between the two halves
 	slow->next = NULL;
 }
