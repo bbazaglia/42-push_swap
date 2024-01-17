@@ -34,43 +34,44 @@ int	is_sorted(t_stack_list *stack)
 	return (1);
 }
 
-// instead of using the value, it would be possible to use the index
 void	sort_three(t_stack_list *stack)
 {
-	if (stack->head->value > stack->head->next->value
-		&& stack->head->value > stack->head->next->next->value)
+	if (stack->head->index > stack->head->next->index
+		&& stack->head->index > stack->head->next->next->index)
 		ra(stack);
-	else if (stack->head->next->value > stack->head->value
-			&& stack->head->next->value > stack->head->next->next->value)
+	else if (stack->head->next->index > stack->head->index
+			&& stack->head->next->index > stack->head->next->next->index)
 		rra(stack);
-	if (stack->head->value > stack->head->next->value)
+	if (stack->head->index > stack->head->next->index)
 		sa(stack);
 }
 
 void	sort_bigger(t_stack_list *stack_a, t_stack_list *stack_b, int length_a)
 {
-	// pb all elements from stack A, except three.
+	// push all elements from stack A, except 3
 	while (length_a > 3)
 	{
-		if (stack_a->head->index < length_a / 2)
+		// "pre sort" by pushing the smallest indexes to stack B and rotating the biggest indexes to the bottom of stack A
+		if (stack_a->head->index <= length_a / 2) 
 			pb(stack_a, stack_b);
 		else
 			ra(stack_a);
 	}
 
-	// sort the 3 numbers left in stack A.
+	// sort the 3 numbers left in stack A
 	sort_three(stack_a);
 
 	while (stack_length(stack_b) > 0)
 	{
-		// Find the current position of every element in stack A and B.
+		/* find the current position of every element in stack A and B, 
+		then calculate the target position in stack A where each element in stack B should be */
+		get_positions(stack_a, stack_b);
 
-		// Calculate the target position in stack A where each element in stack B should be.
+		// Calculate the number of actions (the cost) to put each element in stack B at its target position in stack A and choose the element that’s cheapest to move
 
-		// Calculate the number of actions (the cost) to put each element in stack B at its target position in stack A and choose the element that’s cheapest to move.
-
-		// Execute the sequence of actions needed to move the element from stack B to stack A.
-
-		// If stack A is not sorted, chose between ra and rra to rotate it into ascending order.
+		// Execute the sequence of actions needed to move the element from stack B to stack A
+	
 	}
+	if (is_sorted(stack_a) == 0)
+		// If stack A is not sorted, chose between ra and rra to rotate it into ascending order
 }

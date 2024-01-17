@@ -4,7 +4,6 @@ void	assign_index(t_stack_list *stack)
 {
 	t_stack_list	*temp_stack;
 	t_stack_node	*current_node;
-	int				current_pos;
 	int				index;
 
 	// create a temporary stack
@@ -17,15 +16,6 @@ void	assign_index(t_stack_list *stack)
 
 	// sort the temporary stack using merge sort
 	merge_sort(&(temp_stack->head));
-
-	// assign current_pos based on initial position in the original stack
-	current_pos = 1;
-	current_node = stack->head;
-	while (current_node != NULL)
-	{
-		current_node->current_pos = current_pos++;
-		current_node = current_node->next;
-	}
 
 	// assign index based on sorted position in the temporary stack
 	index = 1;

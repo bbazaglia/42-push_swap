@@ -47,8 +47,10 @@ void					add_node(t_stack_list *stack, int value);
 void					clear_stack(t_stack_list *stack);
 int						stack_length(t_stack_list *stack);
 
-//
-
+// assign positions (index, current_pos and target_pos)
+void 					get_positions(t_stack_list *stack_a, t_stack_list *stack_b);
+void					get_cur_pos(t_stack_list *stack);
+int						get_target_pos(t_stack_list *stack, int index_b, int max_index, int target);
 void					assign_index(t_stack_list *stack);
 void					copy_stack(t_stack_list *src, t_stack_list *dest);
 t_stack_node			*merge_sorted_lists(t_stack_node *a, t_stack_node *b);
