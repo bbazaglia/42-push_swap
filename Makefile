@@ -2,17 +2,20 @@ NAME = push_swap
 
 CC = cc
 
-CFLAGS = -Wall -Wextra -Werror -g3
+CFLAGS = -Wall -Wextra -Werror -g3 
+# check leaks: -fsanitize=address
 
-SRC = push_swap.c \
+SRC = assign_index.c \
+		cheapest_move.c \
 		check_input.c \
-		linked_list.c \
-		assign_index.c \
+		get_cost.c \
 		get_position.c \
-		push_move.c \
-		reverse_rotate_move.c \
-		rotate_move.c \
-		swap_move.c \
+		linked_list.c \
+		move_push.c \
+		move_reverse_rotate.c \
+		move_rotate.c \
+		move_swap.c \
+		push_swap.c \
 		sort.c \
 		utils.c
 

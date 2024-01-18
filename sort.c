@@ -63,14 +63,14 @@ void	sort_bigger(t_stack_list *stack_a, t_stack_list *stack_b, int length_a)
 
 	while (stack_length(stack_b) > 0)
 	{
-		/* find the current position of every element in stack A and B, 
-		then calculate the target position in stack A where each element in stack B should be */
+		// calculate the current position of each element in stack A and stack B and the target position of each element in stack B
 		get_positions(stack_a, stack_b);
 
-		// Calculate the number of actions (the cost) to put each element in stack B at its target position in stack A and choose the element that’s cheapest to move
+		// calculate the number of actions (the cost) to put each element in stack B at its target position in stack A
+		get_cost(stack_a, stack_b);
 
-		// Execute the sequence of actions needed to move the element from stack B to stack A
-	
+		// move the element from stack B to stack A that has the lowest cost
+		do_cheapest_move(stack_a, stack_b);	
 	}
 	// if (is_sorted(stack_a) == 0)
 		// If stack A is not sorted, chose between ra and rra to rotate it into ascending order
