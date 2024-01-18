@@ -63,3 +63,24 @@ int	get_target_pos(t_stack_list *stack, int index_b, int max_index, int target)
 	}
 	return (target);
 }
+
+int get_lowest_index_pos(t_stack_list *stack)
+{
+	t_stack_node	*current;
+	int				lowest_index;
+	int				lowest_index_pos;
+
+	current = stack->head;
+	lowest_index = INT_MAX;
+	lowest_index_pos = 0;
+	while (current)
+	{
+		if (current->index < lowest_index)
+		{
+			lowest_index = current->index;
+			lowest_index_pos = current->current_pos;
+		}
+		current = current->next;
+	}
+	return (lowest_index_pos);
+}

@@ -72,6 +72,25 @@ void	sort_bigger(t_stack_list *stack_a, t_stack_list *stack_b, int length_a)
 		// move the element from stack B to stack A that has the lowest cost
 		do_cheapest_move(stack_a, stack_b);	
 	}
-	// if (is_sorted(stack_a) == 0)
-		// If stack A is not sorted, chose between ra and rra to rotate it into ascending order
+	if (is_sorted(stack_a) == 0)
+		adjust_stack_a(stack_a);
+}
+
+void	adjust_stack_a(t_stack_list *stack_a)
+{
+	int	lowest_pos;
+	int len;
+
+	len = stack_length(stack_a);
+	lowest_pos = get_lowest_index_pos(stack_a);
+	if (lowest_pos > len / 2)
+	{
+		while (lowest_pos++ < len)
+			rra(stack_a);
+	}
+	else
+	{
+		while (lowest_pos-- > 0)
+			ra(stack_a);
+	}
 }

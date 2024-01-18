@@ -14,6 +14,8 @@ int	main(int argc, char **argv)
     stack_b = create_stack(0, NULL);
 	assign_index(stack_a);
 	sort_stack(stack_a, stack_b);
+	clear_stack(stack_a);
+	clear_stack(stack_b);
 	return (0);
 }
 

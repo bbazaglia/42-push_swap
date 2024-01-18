@@ -25,7 +25,7 @@ int	ft_isdigit(int c)
 	return (0);
 }
 
-int abs_value(int n)
+int ft_abs(int n)
 {
 	if (n < 0)
 		return (n * -1);

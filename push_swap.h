@@ -46,13 +46,14 @@ t_stack_list			*create_stack(int argc, char **argv);
 void					add_node(t_stack_list *stack, int value);
 void					clear_stack(t_stack_list *stack);
 int						stack_length(t_stack_list *stack);
+void					copy_stack(t_stack_list *src, t_stack_list *dest);
 
 // assign positions (index, current_pos and target_pos)
 void 					get_positions(t_stack_list *stack_a, t_stack_list *stack_b);
 void					get_cur_pos(t_stack_list *stack);
 int						get_target_pos(t_stack_list *stack, int index_b, int max_index, int target);
+int						get_lowest_index_pos(t_stack_list *stack);
 void					assign_index(t_stack_list *stack);
-void					copy_stack(t_stack_list *src, t_stack_list *dest);
 t_stack_node			*merge_sorted_lists(t_stack_node *a, t_stack_node *b);
 void					find_middle_and_split(t_stack_node *source, t_stack_node **front_ref, t_stack_node **back_ref);
 void					merge_sort(t_stack_node **head_ref);
@@ -75,13 +76,17 @@ void					sa(t_stack_list *stack_a);
 void					sb(t_stack_list *stack_b);
 void					ss(t_stack_list *stack_a, t_stack_list *stack_b);
 
-// sort algorithms
+// sorting algorithm
 void					sort_stack(t_stack_list *stack_a, t_stack_list *stack_b);
 int						is_sorted(t_stack_list *stack);
 void					sort_three(t_stack_list *stack);
 void					sort_bigger(t_stack_list *stack_a, t_stack_list *stack_b, int length_a);
-
+void 					adjust_stack_a(t_stack_list *stack_a);
+void					get_cost(t_stack_list *stack_a, t_stack_list *stack_b);
+void					do_cheapest_move(t_stack_list *stack_a, t_stack_list *stack_b);
+void					do_move(t_stack_list *stack_a, t_stack_list *stack_b, int cheapest_cost_a, int cheapest_cost_b);
 
 // utils
 long					ft_atol(char *str);
 int						ft_isdigit(int c);
+int						ft_abs(int n);

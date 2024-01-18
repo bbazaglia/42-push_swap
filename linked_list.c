@@ -19,6 +19,7 @@ t_stack_list	*create_stack(int argc, char **argv)
 	return (stack);
 }
 
+
 void	add_node(t_stack_list *stack, int value)
 {
 	t_stack_node	*new_node;
@@ -48,7 +49,6 @@ void clear_stack(t_stack_list *stack)
 		free(stack->head);
 		stack->head = tmp;
 	}
-	free(stack);
 }
 
 int stack_length(t_stack_list *stack)
@@ -64,4 +64,16 @@ int stack_length(t_stack_list *stack)
 		tmp = tmp->next;
 	}
 	return (length);
+}
+
+void	copy_stack(t_stack_list *src, t_stack_list *dest)
+{
+	t_stack_node	*current_node;
+
+	current_node = src->head;
+	while (current_node != NULL)
+	{
+		add_node(dest, current_node->value);
+		current_node = current_node->next;
+	}
 }

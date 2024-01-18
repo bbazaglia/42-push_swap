@@ -30,18 +30,6 @@ void	assign_index(t_stack_list *stack)
 	clear_stack(temp_stack);
 }
 
-void	copy_stack(t_stack_list *src, t_stack_list *dest)
-{
-	t_stack_node	*current_node;
-
-	current_node = src->head;
-	while (current_node != NULL)
-	{
-		add_node(dest, current_node->value);
-		current_node = current_node->next;
-	}
-}
-
 t_stack_node	*merge_sorted_lists(t_stack_node *a, t_stack_node *b)
 {
 	t_stack_node	*result;
