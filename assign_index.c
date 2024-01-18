@@ -20,7 +20,7 @@ void	assign_index(t_stack_list *stack)
 	// assign index based on sorted position in the temporary stack
 	index = 1;
 	current_node = temp_stack->head;
-	while (current_node != NULL)
+	while (current_node)
 	{
 		current_node->index = index++;
 		current_node = current_node->next;

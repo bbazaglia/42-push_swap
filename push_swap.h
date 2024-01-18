@@ -47,6 +47,7 @@ void					add_node(t_stack_list *stack, int value);
 void					clear_stack(t_stack_list *stack);
 int						stack_length(t_stack_list *stack);
 void					copy_stack(t_stack_list *src, t_stack_list *dest);
+// void 					initialize_stack_b(t_stack_list *stack_b);
 
 // assign positions (index, current_pos and target_pos)
 void 					get_positions(t_stack_list *stack_a, t_stack_list *stack_b);
@@ -59,8 +60,8 @@ void					find_middle_and_split(t_stack_node *source, t_stack_node **front_ref, t
 void					merge_sort(t_stack_node **head_ref);
 
 // operations
-void					push_node(t_stack_list *stack, int value);
-int						pop_node(t_stack_list *stack);
+void push				(t_stack_list *stack, t_stack_node *new_node);
+t_stack_node 			*pop(t_stack_list *stack);
 void					pb(t_stack_list *stack_a, t_stack_list *stack_b);
 void					pa(t_stack_list *stack_a, t_stack_list *stack_b);
 void					reverse_rotate(t_stack_list *stack);

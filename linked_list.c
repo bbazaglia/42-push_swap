@@ -7,18 +7,19 @@ t_stack_list	*create_stack(int argc, char **argv)
 	int				value;
 
 	stack = (t_stack_list *)malloc(sizeof(t_stack_list));
+	if (!stack)
+		print_error();
 	stack->head = NULL;
 	stack->tail = NULL;
 	i = 1;
 	while (i < argc)
 	{
-		value = atol(argv[i]);
+		value = ft_atol(argv[i]);
 		add_node(stack, value);
 		i++;
 	}
 	return (stack);
 }
-
 
 void	add_node(t_stack_list *stack, int value)
 {
@@ -28,6 +29,11 @@ void	add_node(t_stack_list *stack, int value)
 	if (!new_node)
 		print_error();
 	new_node->value = value;
+	new_node->current_pos = 0; 
+    new_node->target_pos = 0; 
+    new_node->index = 0; 
+    new_node->cost_a = 0; 
+    new_node->cost_b = 0;
 	new_node->next = NULL;
 	new_node->prev = stack->tail;
 	if (stack->tail)
@@ -49,6 +55,7 @@ void clear_stack(t_stack_list *stack)
 		free(stack->head);
 		stack->head = tmp;
 	}
+	free(stack);
 }
 
 int stack_length(t_stack_list *stack)
@@ -77,3 +84,16 @@ void	copy_stack(t_stack_list *src, t_stack_list *dest)
 		current_node = current_node->next;
 	}
 }
+
+// void initialize_stack_b(t_stack_list *stack_b)
+// {
+// 	stack_b->head = NULL;
+// 	// stack_b->head->value = 0;
+// 	// stack_b->head->target_pos = 0;
+// 	// stack_b->head->current_pos = 0;
+// 	// stack_b->head->index = 0;
+// 	// stack_b->head->cost_a = 0;
+// 	// stack_b->head->cost_b = 0;
+// 	// stack_b->head->next = NULL;
+// 	// stack_b->head->prev = NULL;
+// }
