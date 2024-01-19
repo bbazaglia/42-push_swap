@@ -1,33 +1,41 @@
 #include "push_swap.h"
 
-void	assign_index(t_stack_list *stack)
+void assign_index(t_stack_list *stack) 
 {
-	t_stack_list	*temp_stack;
-	t_stack_node	*current_node;
-	int				index;
+    t_stack_list *temp_stack;
+    t_stack_node *current_temp_node;
+	t_stack_node *current_stack_node;
+    int index;
 
-	// create a temporary stack
-	temp_stack = (t_stack_list *)malloc(sizeof(t_stack_list));
-	temp_stack->head = NULL;
-	temp_stack->tail = NULL;
+    // create a temporary stack
+    temp_stack = (t_stack_list *)malloc(sizeof(t_stack_list));
+    temp_stack->head = NULL;
+    temp_stack->tail = NULL;
 
-	// copy the original stack to the temporary stack
-	copy_stack(stack, temp_stack);
+    // copy the original stack to the temporary stack
+    copy_stack(stack, temp_stack);
 
-	// sort the temporary stack using merge sort
-	merge_sort(&(temp_stack->head));
+    // sort the temporary stack using merge sort
+    merge_sort(&(temp_stack->head));
 
-	// assign index based on sorted position in the temporary stack
-	index = 1;
-	current_node = temp_stack->head;
-	while (current_node)
+    // assign index based on sorted position in the temporary stack
+    index = 1;
+    current_temp_node = temp_stack->head;
+    while (current_temp_node) 
 	{
-		current_node->index = index++;
-		current_node = current_node->next;
-	}
-
-	// free the temporary stack
-	clear_stack(temp_stack);
+        current_stack_node = stack->head;
+        while (current_stack_node) 
+		{
+            // If the value is found and the index is not already assigned, assign the index
+            if (current_stack_node->value == current_temp_node->value && current_stack_node->index == 0) 
+                current_stack_node->index = index;
+            current_stack_node = current_stack_node->next;
+        }
+        current_temp_node = current_temp_node->next;
+        index++;
+    }
+    // free the temporary stack
+    clear_stack(temp_stack);
 }
 
 t_stack_node	*merge_sorted_lists(t_stack_node *a, t_stack_node *b)

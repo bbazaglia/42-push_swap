@@ -84,16 +84,3 @@ void	copy_stack(t_stack_list *src, t_stack_list *dest)
 		current_node = current_node->next;
 	}
 }
-
-// void initialize_stack_b(t_stack_list *stack_b)
-// {
-// 	stack_b->head = NULL;
-// 	// stack_b->head->value = 0;
-// 	// stack_b->head->target_pos = 0;
-// 	// stack_b->head->current_pos = 0;
-// 	// stack_b->head->index = 0;
-// 	// stack_b->head->cost_a = 0;
-// 	// stack_b->head->cost_b = 0;
-// 	// stack_b->head->next = NULL;
-// 	// stack_b->head->prev = NULL;
-// }
