@@ -27,7 +27,7 @@ int	is_sorted(t_stack_list *stack)
 	current = stack->head;
 	while (current && current->next)
 	{
-		if (current->value > current->next->value)
+		if (current->index > current->next->index)
 			return (0);
 		current = current->next;
 	}
@@ -36,13 +36,13 @@ int	is_sorted(t_stack_list *stack)
 
 void	sort_three(t_stack_list *stack)
 {
-	if (stack->head->value > stack->head->next->value
-		&& stack->head->value > stack->head->next->next->value)
+	if (stack->head->index > stack->head->next->index
+		&& stack->head->index > stack->head->next->next->index)
 		ra(stack);
-	else if (stack->head->next->value > stack->head->value
-			&& stack->head->next->value > stack->head->next->next->value)
+	else if (stack->head->next->index > stack->head->index
+			&& stack->head->next->index > stack->head->next->next->index)
 		rra(stack);
-	if (stack->head->value > stack->head->next->value)
+	if (stack->head->index > stack->head->next->index)
 		sa(stack);
 }
 
