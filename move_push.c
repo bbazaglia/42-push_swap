@@ -1,52 +1,42 @@
 #include "push_swap.h"
 
 // push a new element onto the front of the stack
-void push(t_stack_list *stack, t_stack_node *new_node)
+void push(t_stack_list *src_stack, t_stack_list *dest_stack)
 {
-	new_node->next = stack->head;
-	new_node->prev = NULL;
-	if (stack->head)
-		stack->head->prev = new_node;
-	else
-		stack->tail = new_node; 
-	stack->head = new_node;
-}
+	t_stack_node *tmp;
 
-// remove the first element from the stack and return its value
-t_stack_node *pop(t_stack_list *stack)
-{
-	t_stack_node *popped_node;
+	// if the source stack is empty, there is nothing to push
+	if (src_stack->head == NULL)
+		return;
 
-	if (!stack->head)
-		print_error(); 
-	popped_node = stack->head;
-	stack->head = stack->head->next;
-	if (stack->head)
-		stack->head->prev = NULL;
+	// create a pointer to the next element in the source stack
+	tmp = src_stack->head->next;
+
+	if (tmp)
+		// if the source stack had more than one element, the new head is the next element
+		tmp->prev = NULL;
 	else
-		stack->tail = NULL;
-	return popped_node;
+		// if the source stack had only one element, the stack is now empty
+		src_stack->tail = NULL; 
+
+	// update the pointers of the destination stack
+	src_stack->head->next = dest_stack->head;
+	if (dest_stack->head)
+		dest_stack->head->prev = src_stack->head;
+
+	// update the pointers of the source stack
+	dest_stack->head = src_stack->head;
+	src_stack->head = tmp;
 }
 
 void pa(t_stack_list *stack_a, t_stack_list *stack_b)
 {
-    if (stack_b->head) 
-    {
-        t_stack_node *popped_node = pop(stack_b);
-        push(stack_a, popped_node);
-    }
-    else
-        print_error();
+    push(stack_b, stack_a);
+	write(1, "pa\n", 3);
 }
 
 void pb(t_stack_list *stack_a, t_stack_list *stack_b)
 {
-    if (stack_a->head) 
-    {
-        t_stack_node *popped_node = pop(stack_a);
-        push(stack_b, popped_node);
-    }
-    else
-
-        print_error();
+    push(stack_a, stack_b);
+	write(1, "pb\n", 3);
 }

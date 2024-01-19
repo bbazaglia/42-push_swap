@@ -60,8 +60,7 @@ void					find_middle_and_split(t_stack_node *source, t_stack_node **front_ref, t
 void					merge_sort(t_stack_node **head_ref);
 
 // operations
-void push				(t_stack_list *stack, t_stack_node *new_node);
-t_stack_node 			*pop(t_stack_list *stack);
+void 					push(t_stack_list *src_stack, t_stack_list *dest_stack);
 void					pb(t_stack_list *stack_a, t_stack_list *stack_b);
 void					pa(t_stack_list *stack_a, t_stack_list *stack_b);
 void					reverse_rotate(t_stack_list *stack);
