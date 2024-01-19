@@ -60,7 +60,7 @@ void					find_middle_and_split(t_stack_node *source, t_stack_node **front_ref, t
 void					merge_sort(t_stack_node **head_ref);
 
 // operations
-void 					push(t_stack_list *src_stack, t_stack_list *dest_stack);
+void 					push(t_stack_list *src, t_stack_list *dest);
 void					pb(t_stack_list *stack_a, t_stack_list *stack_b);
 void					pa(t_stack_list *stack_a, t_stack_list *stack_b);
 void					reverse_rotate(t_stack_list *stack);
@@ -81,6 +81,7 @@ void					sort_stack(t_stack_list *stack_a, t_stack_list *stack_b);
 int						is_sorted(t_stack_list *stack);
 void					sort_three(t_stack_list *stack);
 void					sort_bigger(t_stack_list *stack_a, t_stack_list *stack_b, int length_a);
+void populate_stack_b(t_stack_list *stack_a, t_stack_list *stack_b, int length_a);
 void 					adjust_stack_a(t_stack_list *stack_a);
 void					get_cost(t_stack_list *stack_a, t_stack_list *stack_b);
 void					do_cheapest_move(t_stack_list *stack_a, t_stack_list *stack_b);

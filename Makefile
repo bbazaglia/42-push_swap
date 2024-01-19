@@ -3,7 +3,7 @@ NAME = push_swap
 CC = cc
 
 CFLAGS = -Wall -Wextra -Werror -g3 
-# check leaks: -fsanitize=address
+# -fsanitize=address
 
 SRC = assign_index.c \
 		cheapest_move.c \

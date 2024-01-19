@@ -48,32 +48,40 @@ void	sort_three(t_stack_list *stack)
 
 void	sort_bigger(t_stack_list *stack_a, t_stack_list *stack_b, int length_a)
 {
-	// push all elements from stack A, except 3
-	while (length_a > 3)
-	{
-		// "pre sort" by pushing the smallest indexes to stack B and rotating the biggest indexes to the bottom of stack A
-		if (stack_a->head->index <= length_a / 2) 
-			pb(stack_a, stack_b);
-		else
-			ra(stack_a);
-	}
+	populate_stack_b(stack_a, stack_b, length_a);
+    sort_three(stack_a);
+    while (stack_length(stack_b))
+    {
+        get_positions(stack_a, stack_b);
+        get_cost(stack_a, stack_b);
+        do_cheapest_move(stack_a, stack_b);	
+    }
+    if (is_sorted(stack_a) == 0)
+        adjust_stack_a(stack_a);
+}
 
-	// sort the 3 numbers left in stack A
-	sort_three(stack_a);
+void populate_stack_b(t_stack_list *stack_a, t_stack_list *stack_b, int length_a)
+{
+    int pushed = 0;
+    int i = 0;
 
-	while (stack_length(stack_b) > 0)
-	{
-		// calculate the current position of each element in stack A and stack B and the target position of each element in stack B
-		get_positions(stack_a, stack_b);
+    while (length_a > 3 && i < length_a && pushed < length_a / 2)
+    {
+        if (stack_a->head->index <= length_a / 2)
+        {
+            pb(stack_a, stack_b);
+            pushed++;
+        }
+        else
+            ra(stack_a);
+        i++;
+    }
 
-		// calculate the number of actions (the cost) to put each element in stack B at its target position in stack A
-		get_cost(stack_a, stack_b);
-
-		// move the element from stack B to stack A that has the lowest cost
-		do_cheapest_move(stack_a, stack_b);	
-	}
-	if (is_sorted(stack_a) == 0)
-		adjust_stack_a(stack_a);
+    while (length_a - pushed > 3)
+    {
+        pb(stack_a, stack_b);
+        pushed++;
+    }
 }
 
 void	adjust_stack_a(t_stack_list *stack_a)

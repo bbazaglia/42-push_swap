@@ -75,7 +75,8 @@ void	old_assign_position(t_stack_list *stack)
 }
 
 /* it's not necessary to assign the current position before sorting, 
-as we will only use the current position only sending the numbers to stack B */
+as we will only use the current position only sending the numbers to stack B 
+*/
 void	old_assign_index(t_stack_list *stack)
 {
 	t_stack_list	*temp_stack;
@@ -115,3 +116,66 @@ void	old_assign_index(t_stack_list *stack)
 	// free the temporary stack
 	clear_stack(temp_stack);
 }
+
+/* to visualize push function on python tutor:
+#include <stdlib.h>
+
+typedef struct s_stack
+{
+    int                value;
+    struct s_stack    *next;
+}    t_stack;
+
+static void    push(t_stack **src, t_stack **dest)
+{
+    t_stack    *tmp;
+
+    if (*src == NULL)
+        return ;
+        
+    tmp = (*src)->next;
+    (*src)->next = *dest;
+    *dest = *src;
+    *src = tmp;
+}
+
+int main(void)
+{
+  t_stack *src;
+  t_stack *dest;
+  t_stack *temp;
+  
+  src = NULL;
+  
+  temp = malloc(sizeof(t_stack));
+  temp->value = 10;
+  
+  src = temp;
+  
+  temp = malloc(sizeof(t_stack));
+  temp->value = 20;
+  
+  src->next = temp;
+  
+  src->next->next = NULL;
+  
+  
+  dest = NULL;
+  
+  temp = malloc(sizeof(t_stack));
+  temp->value = 1;
+  
+  dest = temp;
+  
+  temp = malloc(sizeof(t_stack));
+  temp->value = 2;
+  
+  dest->next = temp;
+  
+  dest->next->next = NULL;
+  
+  
+  push(&src, &dest);
+  
+}
+*/
