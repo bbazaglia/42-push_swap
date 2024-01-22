@@ -4,7 +4,7 @@ void assign_index(t_stack_list *stack)
 {
     t_stack_list *temp_stack;
     t_stack_node *current_temp_node;
-	t_stack_node *current_stack_node;
+    t_stack_node *current_stack_node;
     int index;
 
     // create a temporary stack
@@ -22,21 +22,34 @@ void assign_index(t_stack_list *stack)
     index = 1;
     current_temp_node = temp_stack->head;
     while (current_temp_node) 
-	{
+    {
         current_stack_node = stack->head;
         while (current_stack_node) 
-		{
-            // If the value is found and the index is not already assigned, assign the index
-            if (current_stack_node->value == current_temp_node->value && current_stack_node->index == 0) 
+        {
+            // If the value is found, assign the index
+            if (current_stack_node->value == current_temp_node->value) 
                 current_stack_node->index = index;
             current_stack_node = current_stack_node->next;
         }
         current_temp_node = current_temp_node->next;
         index++;
     }
+	// t_stack_node *temp = stack->head;
+	// while (temp)
+	// {
+	// 	printf("after assign_index... index: %d and value: %d\n", temp->index, temp->value);
+	// 	temp = temp->next;
+	// }
+	// t_stack_node *temp2 = temp_stack->head;
+	// while (temp2)
+	// {
+	// 	printf("after assign_index... index: %d and value: %d\n", temp2->index, temp2->value);
+	// 	temp2 = temp2->next;
+	// }
     // free the temporary stack
     clear_stack(temp_stack);
 }
+
 
 t_stack_node	*merge_sorted_lists(t_stack_node *a, t_stack_node *b)
 {

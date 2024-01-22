@@ -39,7 +39,7 @@ int	get_target_pos(t_stack_list *stack, int index_b, int max_index, int target)
 	while (current_a)
 	{
 		// find the smallest index in stack_a that is bigger than current_b->index
-		if (current_a->index > index_b && current_a->index < INT_MAX)
+		if (current_a->index > index_b && current_a->index < max_index)
 		{
 			max_index = current_a->index;
 			target = current_a->current_pos;

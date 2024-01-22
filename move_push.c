@@ -29,7 +29,6 @@ void push(t_stack_list *src_stack, t_stack_list *dest_stack)
 	src_stack->head = tmp;
 }
 
-
 void pa(t_stack_list *stack_a, t_stack_list *stack_b)
 {
     push(stack_b, stack_a);
