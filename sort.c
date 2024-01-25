@@ -66,13 +66,7 @@ void	sort_bigger(t_stack_list *stack_a, t_stack_list *stack_b, int length_a)
 	// 	temp2 = temp2->next;
 	// }
 
-	t_stack_node *temp5 = stack_b->head;
-	printf("\nstack B after all elements but 3 are pushed from stack A:\n");
-	while (temp5)
-	{
-		printf("index: %d and value: %d\n", temp5->index, temp5->value);
-		temp5 = temp5->next;
-	}
+
 
     sort_three(stack_a);
 
@@ -84,39 +78,47 @@ void	sort_bigger(t_stack_list *stack_a, t_stack_list *stack_b, int length_a)
 		temp3 = temp3->next;
 	}
 
+	t_stack_node *temp5 = stack_b->head;
+	printf("\nstack B after all elements but 3 are pushed from stack A:\n");
+	while (temp5)
+	{
+		printf("index: %d and value: %d\n", temp5->index, temp5->value);
+		temp5 = temp5->next;
+	}
+
     while (stack_length(stack_b))
     {
         get_positions(stack_a, stack_b);
         get_cost(stack_a, stack_b);
         do_cheapest_move(stack_a, stack_b);	
 
-		t_stack_node *temp10 = stack_a->head;
-		printf("\nstack A after cheapest move is done:\n");
-		while (temp10)
-		{
-			printf("index: %d and value: %d\n", temp10->index, temp10->value);
-			temp10 = temp10->next;
-		}  
+		// t_stack_node *temp10 = stack_a->head;
+		// printf("\nstack A after cheapest move is done:\n");
+		// while (temp10)
+		// {
+		// 	printf("index: %d and value: %d\n", temp10->index, temp10->value);
+		// 	temp10 = temp10->next;
+		// }  
 
-		t_stack_node *temp11 = stack_b->head;
-		printf("\nstack B:\n");
-		while (temp11)
-		{
-			printf("index: %d and value: %d\n", temp11->index, temp11->value);
-			temp11 = temp11->next;
-		}  
+		// t_stack_node *temp11 = stack_b->head;
+		// printf("\nstack B:\n");
+		// while (temp11)
+		// {
+		// 	printf("index: %d and value: %d\n", temp11->index, temp11->value);
+		// 	temp11 = temp11->next;
+		// }  
 		
     }
 
-	t_stack_node *temp = stack_a->head;
-	printf("\nstack A after all elements are back to stack A:\n ");
-	while (temp)
-	{
-		printf("index: %d and value: %d\n", temp->index, temp->value);
-		temp = temp->next;
-	}
+	// t_stack_node *temp = stack_a->head;
+	// printf("\nstack A after all elements are back to stack A:\n ");
+	// while (temp)
+	// {
+	// 	printf("index: %d and value: %d\n", temp->index, temp->value);
+	// 	temp = temp->next;
+	// }
 
-	printf("\nBefore calling 'is_sorted'\n");
+	// printf("\nBefore calling 'is_sorted'\n");
 	
     if (!is_sorted(stack_a))
         adjust_stack_a(stack_a);
@@ -182,7 +184,7 @@ void	adjust_stack_a(t_stack_list *stack_a)
 	}
 	else
 	{
-		while (lowest_pos-- > 1)
+		while (lowest_pos-- > 0)
 		{
 			printf("lowest pos: %d\n", lowest_pos);
 			ra(stack_a);

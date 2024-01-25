@@ -52,6 +52,7 @@ int	get_target_pos(t_stack_list *stack, int index_b, int target_index, int targe
 	t_stack_node	*current_a;
 
 	current_a = stack->head;
+	printf("current_a->index: %d\n", current_a->index);
 	while (current_a)
 	{
 		// find the smallest index in stack_a that is bigger than current_b->index
@@ -63,20 +64,24 @@ int	get_target_pos(t_stack_list *stack, int index_b, int target_index, int targe
 		current_a = current_a->next;
 	}
 	
-	// if no target is found, find the smallest index in stack_a
-	if (target == 0)
+	if (target_index != INT_MAX)
 	{
-		while (current_a)
-		{
-			if (current_a->index < target_index)
-			{
-				target_index = current_a->index;
-				target = current_a->current_pos;
-			}
-			current_a = current_a->next;
-		}
+		printf("\n\ntarget: %d\n", target);
 		return (target);
+	}	
+
+	current_a = stack->head;
+	// if no target is found, find the smallest index in stack_a
+	while (current_a)
+	{
+		if (current_a->index < target_index)
+		{
+			target_index = current_a->index;
+			target = current_a->current_pos;
+		}
+		current_a = current_a->next;
 	}
+	printf("\n\ntarget: %d\n", target);
 	return (target);
 }
 
