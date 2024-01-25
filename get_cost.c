@@ -17,14 +17,14 @@ void get_cost(t_stack_list *stack_a, t_stack_list *stack_b)
         if (current_b->current_pos > length_b / 2)
             current_b->cost_b = (length_b - current_b->current_pos) * -1;
 
-        printf("current_b->cost_b: %d, current_b->index: %d and current_b->current_pos = %d\n", current_b->cost_b, current_b->index, current_b->current_pos);
+        // printf("current_b->cost_b: %d, current_b->index: %d and current_b->current_pos = %d\n", current_b->cost_b, current_b->index, current_b->current_pos);
 
         // calculate cost for the stack_b element get to the top of the list based on its target position
         current_b->cost_a = current_b->target_pos;
         if (current_b->target_pos > length_a / 2)
             current_b->cost_a = (length_a - current_b->target_pos) * -1;
 
-        printf("current_b->cost_a: %d, current_b->index: %d and current_b->current_pos = %d\n", current_b->cost_a, current_b->index, current_b->current_pos);
+        // printf("current_b->cost_a: %d, current_b->index: %d and current_b->current_pos = %d\n", current_b->cost_a, current_b->index, current_b->current_pos);
 
         current_b = current_b->next;
     }

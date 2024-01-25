@@ -18,23 +18,8 @@ int	main(int argc, char **argv)
 
 	assign_index(stack_a);
 
-	// t_stack_node *temp2 = stack_a->head;
-	// printf("\nstack A:\n");
-	// while (temp2)
-	// {
-	// 	printf("index: %d and value: %d\n", temp2->index, temp2->value);
-	// 	temp2 = temp2->next;
-	// } 
-
 	sort_stack(stack_a, stack_b);
 
-	t_stack_node *temp = stack_a->head;
-	printf("\nStack A after sorting:\n");
-	while (temp)
-	{
-		printf("index: %d and value: %d\n", temp->index, temp->value);
-		temp = temp->next;
-	}
 	clear_stack(stack_a);
 	clear_stack(stack_b);
 	return (0);

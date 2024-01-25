@@ -35,18 +35,6 @@ void assign_index(t_stack_list *stack)
         current_temp_node = current_temp_node->next;
         index++;
     }
-	// t_stack_node *temp = stack->head;
-	// while (temp)
-	// {
-	// 	printf("after assign_index... index: %d and value: %d\n", temp->index, temp->value);
-	// 	temp = temp->next;
-	// }
-	// t_stack_node *temp2 = temp_stack->head;
-	// while (temp2)
-	// {
-	// 	printf("after assign_index... index: %d and value: %d\n", temp2->index, temp2->value);
-	// 	temp2 = temp2->next;
-	// }
     // free the temporary stack
     clear_stack(temp_stack);
 }
@@ -129,9 +117,3 @@ void	merge_sort(t_stack_node **head_ref)
 	// merge the sorted sublists
 	*head_ref = merge_sorted_lists(a, b);
 }
-
-/*
-The arguments are: 7 2 10 3 5
-The expected index for each element in stack A would be: 4 1 5 2 3
-However, the indexes I'm getting are: 6 3 4 5 1 2
-*/
