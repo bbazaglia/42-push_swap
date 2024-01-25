@@ -108,9 +108,6 @@ void	adjust_stack_a(t_stack_list *stack_a)
 	else
 	{
 		while (lowest_pos-- > 0)
-		{
-			printf("lowest pos: %d\n", lowest_pos);
 			ra(stack_a);
-		}
 	}
 }

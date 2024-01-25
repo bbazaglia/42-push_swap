@@ -20,6 +20,9 @@ int	main(int argc, char **argv)
 
 	sort_stack(stack_a, stack_b);
 
+	print_stack(stack_a);
+	print_stack(stack_b);
+	
 	clear_stack(stack_a);
 	clear_stack(stack_b);
 	return (0);

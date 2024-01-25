@@ -47,7 +47,7 @@ void					add_node(t_stack_list *stack, int value);
 void					clear_stack(t_stack_list *stack);
 int						stack_length(t_stack_list *stack);
 void					copy_stack(t_stack_list *src, t_stack_list *dest);
-// void 					initialize_stack_b(t_stack_list *stack_b);
+void 					print_stack(t_stack_list *stack);
 
 // assign positions (index, current_pos and target_pos)
 void 					get_positions(t_stack_list *stack_a, t_stack_list *stack_b);
