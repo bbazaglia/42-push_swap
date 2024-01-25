@@ -15,8 +15,19 @@ int	main(int argc, char **argv)
 	stack_b = create_stack(0, NULL);
 	
 	check_double(stack_a);
+
 	assign_index(stack_a);
+
+	// t_stack_node *temp2 = stack_a->head;
+	// printf("\nstack A:\n");
+	// while (temp2)
+	// {
+	// 	printf("index: %d and value: %d\n", temp2->index, temp2->value);
+	// 	temp2 = temp2->next;
+	// } 
+
 	sort_stack(stack_a, stack_b);
+
 	t_stack_node *temp = stack_a->head;
 	printf("\nStack A after sorting:\n");
 	while (temp)

@@ -1,5 +1,6 @@
 #include "push_swap.h"
 
+
 void assign_index(t_stack_list *stack) 
 {
     t_stack_list *temp_stack;
@@ -128,3 +129,9 @@ void	merge_sort(t_stack_node **head_ref)
 	// merge the sorted sublists
 	*head_ref = merge_sorted_lists(a, b);
 }
+
+/*
+The arguments are: 7 2 10 3 5
+The expected index for each element in stack A would be: 4 1 5 2 3
+However, the indexes I'm getting are: 6 3 4 5 1 2
+*/

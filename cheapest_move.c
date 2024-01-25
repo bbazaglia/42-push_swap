@@ -36,14 +36,14 @@ void do_move(t_stack_list *stack_a, t_stack_list *stack_b, int cheapest_cost_a, 
         while (cheapest_cost_a++ < 0 && cheapest_cost_b++ < 0)
             rrr(stack_a, stack_b);
     }
-    else if (cheapest_cost_a > 0 && cheapest_cost_b < 0)
+    else if (cheapest_cost_a >= 0 && cheapest_cost_b <= 0)
     {
         while (cheapest_cost_a-- > 0)
             ra(stack_a);
         while (cheapest_cost_b++ < 0)
             rrb(stack_b);
     }
-    else if (cheapest_cost_a < 0 && cheapest_cost_b > 0)
+    else if (cheapest_cost_a <= 0 && cheapest_cost_b >= 0)
     {
         while (cheapest_cost_a++ < 0)
             rra(stack_a);
