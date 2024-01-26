@@ -32,6 +32,7 @@ typedef struct s_stack_list
 {
 	t_stack_node		*head;
 	t_stack_node		*tail;
+	int 				length;
 }						t_stack_list;
 
 // check functions
@@ -80,8 +81,8 @@ void					ss(t_stack_list *stack_a, t_stack_list *stack_b);
 void					sort_stack(t_stack_list *stack_a, t_stack_list *stack_b);
 int						is_sorted(t_stack_list *stack);
 void					sort_three(t_stack_list *stack);
-void					sort_bigger(t_stack_list *stack_a, t_stack_list *stack_b, int length_a);
-void populate_stack_b(t_stack_list *stack_a, t_stack_list *stack_b, int length_a);
+void					sort_bigger(t_stack_list *stack_a, t_stack_list *stack_b);
+void 					populate_stack_b(t_stack_list *stack_a, t_stack_list *stack_b);
 void 					adjust_stack_a(t_stack_list *stack_a);
 void					get_cost(t_stack_list *stack_a, t_stack_list *stack_b);
 void					do_cheapest_move(t_stack_list *stack_a, t_stack_list *stack_b);

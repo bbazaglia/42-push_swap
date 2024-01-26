@@ -11,11 +11,13 @@ t_stack_list	*create_stack(int argc, char **argv)
 		print_error();
 	stack->head = NULL;
 	stack->tail = NULL;
+	stack->length = 0;
 	i = 1;
 	while (i < argc)
 	{
 		value = ft_atol(argv[i]);
 		add_node(stack, value);
+		stack->length++;
 		i++;
 	}
 	return (stack);
@@ -29,11 +31,11 @@ void	add_node(t_stack_list *stack, int value)
 	if (!new_node)
 		print_error();
 	new_node->value = value;
-	new_node->current_pos = 0; 
-    new_node->target_pos = 0; 
-    new_node->index = 0; 
-    new_node->cost_a = 0; 
-    new_node->cost_b = 0;
+	new_node->current_pos = 0;
+	new_node->target_pos = 0;
+	new_node->index = 0;
+	new_node->cost_a = 0;
+	new_node->cost_b = 0;
 	new_node->next = NULL;
 	new_node->prev = stack->tail;
 	if (stack->tail)
@@ -43,7 +45,7 @@ void	add_node(t_stack_list *stack, int value)
 		stack->head = new_node;
 }
 
-void clear_stack(t_stack_list *stack)
+void	clear_stack(t_stack_list *stack)
 {
 	t_stack_node	*tmp;
 
@@ -58,21 +60,6 @@ void clear_stack(t_stack_list *stack)
 	free(stack);
 }
 
-int stack_length(t_stack_list *stack)
-{
-	int				length;
-	t_stack_node	*tmp;
-
-	length = 0;
-	tmp = stack->head;
-	while (tmp)
-	{
-		length++;
-		tmp = tmp->next;
-	}
-	return (length);
-}
-
 void	copy_stack(t_stack_list *src, t_stack_list *dest)
 {
 	t_stack_node	*current_node;
@@ -85,14 +72,14 @@ void	copy_stack(t_stack_list *src, t_stack_list *dest)
 	}
 }
 
-void print_stack(t_stack_list *stack)
+void	print_stack(t_stack_list *stack)
 {
-	t_stack_node	*current_node;
+	t_stack_node *current_node;
 
 	current_node = stack->head;
 	while (current_node != NULL)
 	{
-		printf("value: %d\n", current_node->value);
+		printf("index: %d\n", current_node->index);
 		current_node = current_node->next;
 	}
 }

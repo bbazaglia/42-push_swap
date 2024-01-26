@@ -27,16 +27,19 @@ void push(t_stack_list *src_stack, t_stack_list *dest_stack)
 	// update the pointers of the source stack
 	dest_stack->head = src_stack->head;
 	src_stack->head = tmp;
+
+	src_stack->length--;
+	dest_stack->length++;
 }
 
 void pa(t_stack_list *stack_a, t_stack_list *stack_b)
 {
     push(stack_b, stack_a);
-	write(1, "pa\n", 3);
+	// write(1, "pa\n", 3);
 }
 
 void pb(t_stack_list *stack_a, t_stack_list *stack_b)
 {
     push(stack_a, stack_b);
-	write(1, "pb\n", 3);
+	// write(1, "pb\n", 3);
 }

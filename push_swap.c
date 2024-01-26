@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-// valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./push_swap 1 4 5 7 2 3
+// valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./push_swap 7 2 1 3 6 5 4
 
 int	main(int argc, char **argv)
 {
@@ -17,12 +17,12 @@ int	main(int argc, char **argv)
 	check_double(stack_a);
 
 	assign_index(stack_a);
-
 	sort_stack(stack_a, stack_b);
 
+	printf("After sorting:\n");
 	print_stack(stack_a);
 	print_stack(stack_b);
-	
+
 	clear_stack(stack_a);
 	clear_stack(stack_b);
 	return (0);
