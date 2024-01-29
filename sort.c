@@ -45,28 +45,15 @@ void	sort_three(t_stack_list *stack)
 
 void	sort_bigger(t_stack_list *stack_a, t_stack_list *stack_b)
 {
-	// printf("Only stack A is populated\n\n");
-	// print_stack(stack_a);
-	// print_stack(stack_b);
 	populate_stack_b(stack_a, stack_b);
-	// printf("Stack B is now populated\n Stack A is unsorted\n\n");
-	// print_stack(stack_a);
-	// print_stack(stack_b);
 	sort_three(stack_a);
-	// printf("Stack B is now populated\n\n");
-	// print_stack(stack_b);
-	// printf("Stack A is sorted\n\n");
-	// print_stack(stack_a);
 	while (stack_b->length)
 	{
 		get_positions(stack_a, stack_b);
 		get_cost(stack_a, stack_b);
 		do_cheapest_move(stack_a, stack_b);
-		// printf("Start moving\n\n");
-		// print_stack(stack_a);
-		// print_stack(stack_b);
 	}
-	if (!is_sorted(stack_a))
+	if (is_sorted(stack_a) == 0)
 		adjust_stack_a(stack_a);
 }
 
@@ -104,8 +91,6 @@ void	populate_stack_b(t_stack_list *stack_a, t_stack_list *stack_b)
 void	adjust_stack_a(t_stack_list *stack_a)
 {
 	int lowest_pos;
-	t_stack_node *temp;
-	temp = stack_a->head;
 	int len = stack_a->length;
 
 	lowest_pos = get_lowest_index_pos(stack_a);

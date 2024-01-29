@@ -56,8 +56,3 @@ void	check_double(t_stack_list *stack)
 	}
 }
 
-void	print_error(void)
-{
-	write(2, "Error\n", 6);
-	exit(1);
-}

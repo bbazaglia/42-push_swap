@@ -2,6 +2,9 @@
 
 // valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./push_swap 7 2 1 3 6 5 4
 
+// valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./push_swap 10 90 21 1 5 7 9 0 -1 -4 -7 -52 52 29 30 26 -25 789 12 -27
+// index 12 (value 10) is out of order 
+
 int	main(int argc, char **argv)
 {
 	t_stack_list	*stack_a;
@@ -21,7 +24,7 @@ int	main(int argc, char **argv)
 
 	printf("After sorting:\n");
 	print_stack(stack_a);
-	print_stack(stack_b);
+	// print_stack(stack_b);
 
 	clear_stack(stack_a);
 	clear_stack(stack_b);

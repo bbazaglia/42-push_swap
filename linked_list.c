@@ -79,7 +79,8 @@ void	print_stack(t_stack_list *stack)
 	current_node = stack->head;
 	while (current_node != NULL)
 	{
-		printf("index: %d\n", current_node->index);
+		// printf("index: %d\n ", current_node->index);
+		printf("index: %d\n and value: %d\n", current_node->index, current_node->value);
 		current_node = current_node->next;
 	}
 }
