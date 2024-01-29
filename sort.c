@@ -66,7 +66,7 @@ void	populate_stack_b(t_stack_list *stack_a, t_stack_list *stack_b)
 	len = stack_a->length;
 	pushed = 0;
 	i = 0;
-	while (len > 3 && i < len && pushed < len / 2)
+	while (len > 6 && i < len && pushed < len / 2)
 	{
 		if (stack_a->head->index <= len / 2)
 		{
@@ -105,3 +105,4 @@ void	adjust_stack_a(t_stack_list *stack_a)
 			ra(stack_a);
 	}
 }
+
