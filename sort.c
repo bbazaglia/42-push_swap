@@ -47,11 +47,17 @@ void	sort_bigger(t_stack_list *stack_a, t_stack_list *stack_b)
 {
 	populate_stack_b(stack_a, stack_b);
 	sort_three(stack_a);
+	// printf("3 ELEMENTS LEFT IN STACK A:\n");
+	// print_stack(stack_a);
+	// printf("*********************\n");
 	while (stack_b->length)
 	{
 		get_positions(stack_a, stack_b);
 		get_cost(stack_a, stack_b);
 		do_cheapest_move(stack_a, stack_b);
+		// printf("STACK AFTER MOVE:\n");
+		// print_stack(stack_a);
+		// printf("*********************\n");
 	}
 	if (is_sorted(stack_a) == 0)
 		adjust_stack_a(stack_a);
@@ -66,7 +72,7 @@ void	populate_stack_b(t_stack_list *stack_a, t_stack_list *stack_b)
 	len = stack_a->length;
 	pushed = 0;
 	i = 0;
-	while (len > 6 && i < len && pushed < len / 2)
+	while (stack_a->length > 3 && i < len && pushed < len / 2)
 	{
 		if (stack_a->head->index <= len / 2)
 		{
@@ -96,13 +102,19 @@ void	adjust_stack_a(t_stack_list *stack_a)
 	lowest_pos = get_lowest_index_pos(stack_a);
 	if (lowest_pos > len / 2)
 	{
-		while (lowest_pos++ < len)
+		while (lowest_pos < len)
+		{
 			rra(stack_a);
+			lowest_pos++;
+		}
 	}
 	else
 	{
-		while (lowest_pos-- > 0)
+		while (lowest_pos > 0)
+		{
 			ra(stack_a);
+			lowest_pos--;
+		}
 	}
 }
 

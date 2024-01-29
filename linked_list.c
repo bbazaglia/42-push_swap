@@ -80,7 +80,7 @@ void	print_stack(t_stack_list *stack)
 	while (current_node != NULL)
 	{
 		// printf("index: %d\n ", current_node->index);
-		printf("index: %d\n and value: %d\n", current_node->index, current_node->value);
+		printf("index is %d\n and value is %d\n", current_node->index, current_node->value);
 		current_node = current_node->next;
 	}
 }

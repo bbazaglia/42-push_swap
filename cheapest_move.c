@@ -29,27 +29,47 @@ void	do_move(t_stack_list *stack_a, t_stack_list *stack_b, int cheapest_a,
 {
 	if (cheapest_a > 0 && cheapest_b > 0)
 	{
-		while (cheapest_a-- > 0 && cheapest_b-- > 0)
+		while (cheapest_a > 0 && cheapest_b > 0)
+		{
 			rr(stack_a, stack_b);
+			cheapest_a--;
+			cheapest_b--;
+		}
 	}
 	else if (cheapest_a < 0 && cheapest_b < 0)
 	{
-		while (cheapest_a++ < 0 && cheapest_b++ < 0)
+		while (cheapest_a < 0 && cheapest_b < 0)
+		{
 			rrr(stack_a, stack_b);
+			cheapest_a++;
+			cheapest_b++;
+		}
 	}
 	if (cheapest_a >= 0 && cheapest_b <= 0)
 	{
-		while (cheapest_a-- > 0)
+		while (cheapest_a > 0)
+		{
 			ra(stack_a);
-		while (cheapest_b++ < 0)
+			cheapest_a--;
+		}
+		while (cheapest_b < 0)
+		{
 			rrb(stack_b);
+			cheapest_b++;
+		}
 	}
 	else if (cheapest_a <= 0 && cheapest_b >= 0)
 	{
-		while (cheapest_a++ < 0)
+		while (cheapest_a < 0)
+		{
 			rra(stack_a);
-		while (cheapest_b-- > 0)
+			cheapest_a++;
+		}
+		while (cheapest_b > 0)
+		{
 			rb(stack_b);
+			cheapest_b--;
+		}
 	}
 	pa(stack_a, stack_b);
 }

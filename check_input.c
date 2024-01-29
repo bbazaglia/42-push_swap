@@ -37,6 +37,7 @@ void	check_limit(char *argv)
 		print_error();
 }
 
+// to do: check for doubles during sort
 void	check_double(t_stack_list *stack)
 {
 	t_stack_node	*tmp;

@@ -15,9 +15,9 @@ void	get_positions(t_stack_list *stack_a, t_stack_list *stack_b)
 		cur_b->target_pos = target_pos;
 		cur_b = cur_b->next;
 	}
-	// printf("Current positions: %d \n", stack_b->head->current_pos);
-	print_stack(stack_a);
-	// printf("Target positions: %d \n", stack_b->head->target_pos);
+	// printf("ASSIGN POSITIONS:\n");
+	// print_stack(stack_a);
+	// printf("target pos = %d \n", target_pos);
 	// printf("****************\n");
 }
 
@@ -30,8 +30,9 @@ void	get_cur_pos(t_stack_list *stack)
 	i = 0;
 	while (current)
 	{
-		current->current_pos = i++;
+		current->current_pos = i;
 		current = current->next;
+		i++;
 	}
 }
 

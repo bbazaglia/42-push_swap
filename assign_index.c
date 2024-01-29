@@ -163,7 +163,8 @@ void	merge_sort(t_stack_node **head_ref)
 // 	print_stack(stack);
 // }
 
-// mia's version: void assign_index(t_stack_list *stack)
+// mia's version: 
+// void assign_index(t_stack_list *stack)
 // {
 // 	t_stack_node	*cur;
 // 	t_stack_node	*highest;
