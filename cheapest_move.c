@@ -71,5 +71,5 @@ void	do_move(t_stack_list *stack_a, t_stack_list *stack_b, int cheapest_a,
 			cheapest_b--;
 		}
 	}
-	pa(stack_a, stack_b);
+	pa(stack_b, stack_a);
 }

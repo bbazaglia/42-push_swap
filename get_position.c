@@ -4,7 +4,7 @@ void	get_positions(t_stack_list *stack_a, t_stack_list *stack_b)
 {
 	t_stack_node	*cur_b;
 	int target_pos;
-	
+
 	cur_b = stack_b->head;
 	get_cur_pos(stack_a);
 	get_cur_pos(stack_b);
@@ -51,7 +51,7 @@ int	get_target_pos(t_stack_list *stack, int index_b, int target_index, int targe
 		}
 		current_a = current_a->next;
 	}
-	
+
 	if (target_index != INT_MAX)
 		return (target_pos);
 

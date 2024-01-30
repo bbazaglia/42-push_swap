@@ -31,7 +31,7 @@ void push(t_stack_list *src_stack, t_stack_list *dest_stack)
 	dest_stack->length++;
 }
 
-void pa(t_stack_list *stack_a, t_stack_list *stack_b)
+void pa(t_stack_list *stack_b, t_stack_list *stack_a)
 {
     push(stack_b, stack_a);
 	write(1, "pa\n", 3);
