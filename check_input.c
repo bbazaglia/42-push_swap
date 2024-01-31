@@ -7,6 +7,8 @@ char	**check_input(int argc, char **argv)
 	if (argc == 2)
 	{
 		argv = ft_split(argv[1], ' ');
+		if (!argv || !*argv)
+			print_error();
 		i = 0;
 		while (argv[i])
         {
