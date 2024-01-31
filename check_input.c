@@ -15,7 +15,7 @@ char	**check_input(int argc, char **argv)
 			i++;
         }
 	}
-	else if (argc > 3)
+	else if (argc >= 3)
 	{
 		i = 1;
 		while (i < argc)
