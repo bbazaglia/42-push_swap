@@ -36,11 +36,17 @@ typedef struct s_stack_list
 }						t_stack_list;
 
 // check functions
-void					check_input(int argc, char **argv);
+char					**check_input(int argc, char **argv);
 void					check_characters(char *argv);
 void					check_limit(char *argv);
 void					check_double(t_stack_list *stack);
 void					print_error(void);
+
+// split functions 
+int						count_words(char *str, char c);
+int						word_len(char *str, char c);
+void					*free_array(char **array);
+char					**ft_split(char *s, char c);
 
 // linked list functions
 t_stack_list			*create_stack(int argc, char **argv);

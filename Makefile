@@ -6,6 +6,7 @@ CFLAGS = -Wall -Wextra -Werror -g3
 # -fsanitize=address
 
 SRC = assign_index.c \
+		ft_split.c \
 		cheapest_move.c \
 		check_input.c \
 		get_cost.c \

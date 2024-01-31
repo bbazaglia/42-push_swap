@@ -1,18 +1,33 @@
 #include "push_swap.h"
+#include <string.h>
 
-void	check_input(int argc, char **argv)
+char	**check_input(int argc, char **argv)
 {
 	int	i;
-
-	i = 1;
-	if (argc < 3)
-		print_error();
-	while (i < argc)
+	if (argc == 2)
 	{
-		check_characters(argv[i]);
-		check_limit(argv[i]);
-		i++;
+		argv = ft_split(argv[1], ' ');
+		i = 0;
+		while (argv[i])
+        {
+            check_characters(argv[i]);
+            check_limit(argv[i]);
+			i++;
+        }
 	}
+	else if (argc > 3)
+	{
+		i = 1;
+		while (i < argc)
+		{
+			check_characters(argv[i]);
+			check_limit(argv[i]);
+			i++;
+		}
+	}
+	else 
+		print_error();	
+	return (argv);
 }
 
 void	check_characters(char *argv)
