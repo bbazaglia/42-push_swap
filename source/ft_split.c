@@ -75,17 +75,3 @@ char **ft_split(char *s, char c)
 		array[array_index] = NULL;
 	return (array);
 }
-
-// int main()
-// {
-// 	char *s = "134 2 1";
-// 	char c = ' ';
-// 	char **array = ft_split(s, c);
-// 	int i = 0;
-// 	while (array[i])
-// 	{
-// 		printf("%s\n", array[i]);
-// 		i++;
-// 	}
-// 	return 0;
-// }
