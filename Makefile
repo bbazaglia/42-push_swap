@@ -5,7 +5,7 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror -g3 
 # -fsanitize=address
 
-VPATH = source ./source/moves
+VPATH = source ./source/moves ./source/input_check ./source/sorting_algorithm ./source/stack
 
 INCLUDE = -I./include
 
