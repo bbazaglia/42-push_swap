@@ -26,6 +26,29 @@ void get_cost(t_stack_list *stack_a, t_stack_list *stack_b)
     }
 }
 
+int get_cheaper_cost(int cost_a, int cost_b) 
+{
+    int result;
+
+    if (cost_a > 0 && cost_b > 0) 
+    {
+        if (cost_a > cost_b) 
+            result = cost_a;
+        else 
+            result = cost_b;
+    } 
+    else if (cost_a < 0 && cost_b < 0) 
+    {
+        if (cost_a < cost_b) 
+            result = cost_a;
+        else 
+            result = cost_b;
+    } 
+    else 
+        result = ft_abs(cost_a) + ft_abs(cost_b);
+    return (result);
+}
+
 /* About the cost:
 
 (1) Why divide the length by 2?

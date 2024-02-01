@@ -15,10 +15,6 @@ void	get_positions(t_stack_list *stack_a, t_stack_list *stack_b)
 		cur_b->target_pos = target_pos;
 		cur_b = cur_b->next;
 	}
-	// printf("ASSIGN POSITIONS:\n");
-	// print_stack(stack_a);
-	// printf("target pos = %d \n", target_pos);
-	// printf("****************\n");
 }
 
 void	get_cur_pos(t_stack_list *stack)

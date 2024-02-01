@@ -6,16 +6,17 @@ void	do_cheapest_move(t_stack_list *stack_a, t_stack_list *stack_b)
 	int				cheapest_cost;
 	int				cheapest_a;
 	int				cheapest_b;
+	int				cur_cost;
 
 	cur_b = stack_b->head;
 	cheapest_cost = INT_MAX;
+	cur_cost = 0;
 	while (cur_b)
 	{
-		// find the cheapest cost to move an element from stack_b to stack_a
-		if (ft_abs(cur_b->cost_a)
-			+ ft_abs(cur_b->cost_b) < ft_abs(cheapest_cost))
+		cur_cost = get_cheaper_cost(cur_b->cost_a, cur_b->cost_b);
+		if (ft_abs(cur_cost) < cheapest_cost)
 		{
-			cheapest_cost = ft_abs(cur_b->cost_a) + ft_abs(cur_b->cost_b);
+			cheapest_cost = ft_abs(cur_cost);
 			cheapest_a = cur_b->cost_a;
 			cheapest_b = cur_b->cost_b;
 		}

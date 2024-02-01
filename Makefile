@@ -5,7 +5,9 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror -g3 
 # -fsanitize=address
 
-VPATH = source
+VPATH = source ./source/moves
+
+INCLUDE = -I./include
 
 SRC = assign_index.c \
 		ft_split.c \
@@ -34,7 +36,7 @@ $(NAME): $(SRC_OBJ)
 
 $(OBJ)/%.o : %.c
 	@mkdir -p $(dir $@)	
-	@$(CC) $(CFLAGS) -c $< -o $@ && printf "Compiling: $(notdir $<\n)"
+	@$(CC) $(CFLAGS) -c $< -o $@ $(INCLUDE) && printf "Compiling: $(notdir $<\n)"
 
 clean: 
 	@rm -rf $(OBJ)

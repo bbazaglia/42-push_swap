@@ -85,17 +85,3 @@ void	copy_stack(t_stack_list *src, t_stack_list *dest)
 		current_node = current_node->next;
 	}
 }
-
-void	print_stack(t_stack_list *stack)
-{
-	t_stack_node *current_node;
-
-	current_node = stack->head;
-	while (current_node != NULL)
-	{
-		printf("index = %d\n value = %d\n", current_node->index,
-				current_node->value);
-		// printf("index is %d\n and value is %d\n", current_node->index, current_node->value);
-		current_node = current_node->next;
-	}
-}

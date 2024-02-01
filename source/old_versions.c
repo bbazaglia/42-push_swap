@@ -1,5 +1,169 @@
 #include "push_swap.h"
 
+// to do: refactor the do_move function
+// cost_is_positive(stack_a, stack_b, &cheapest_a, &cheapest_b);
+// cost_is_negative(stack_a, stack_b, &cheapest_a, &cheapest_b);
+// cost_a_is_positive(stack_a, stack_b, &cheapest_a, &cheapest_b);
+// cost_b_is_positive(stack_a, stack_b, &cheapest_a, &cheapest_b);
+
+// void	cost_is_positive(t_stack_list *stack_a, t_stack_list *stack_b,
+// 		int *cheapest_a, int *cheapest_b)
+// {
+// 	if (*cheapest_a > 0 && *cheapest_b > 0)
+// 	{
+// 		while (*cheapest_a > 0 && *cheapest_b > 0)
+// 		{
+// 			rr(stack_a, stack_b);
+// 			(*cheapest_a)--;
+// 			(*cheapest_b)--;
+// 		}
+// 	}
+// }
+
+// void	cost_is_negative(t_stack_list *stack_a, t_stack_list *stack_b,
+// 		int *cheapest_a, int *cheapest_b)
+// {
+// 	else if (*cheapest_a < 0 && *cheapest_b < 0)
+// 	{
+// 		while (*cheapest_a < 0 && *cheapest_b < 0)
+// 		{
+// 			rrr(stack_a, stack_b);
+// 			(*cheapest_a)++;
+// 			(*cheapest_b)++;
+// 		}
+// 	}
+// }
+
+// void	cost_a_is_positive(t_stack_list *stack_a, t_stack_list *stack_b,
+// 		int *cheapest_a, int *cheapest_b)
+// {
+// 	if (*cheapest_a > 0 && *cheapest_b < 0)
+// 	{
+// 		while (*cheapest_a > 0)
+// 		{
+// 			ra(stack_a);
+// 			(*cheapest_a)--;
+// 		}
+// 		while (*cheapest_b < 0)
+// 		{
+// 			rrb(stack_b);
+// 			(*cheapest_b)++;
+// 		}
+// 	}
+// }
+
+// void	cost_b_is_positive(t_stack_list *stack_a, t_stack_list *stack_b,
+// 		int *cheapest_a, int *cheapest_b)
+// {
+// 	if (*cheapest_a < 0 && *cheapest_b > 0)
+// 	{
+// 		while (*cheapest_a < 0)
+// 		{
+// 			rra(stack_a);
+// 			(*cheapest_a)++;
+// 		}
+// 		while (*cheapest_b > 0)
+// 		{
+// 			rb(stack_b);
+// 			(*cheapest_b)--;
+// 		}
+// 	}
+// }
+
+
+void	print_stack(t_stack_list *stack)
+{
+	t_stack_node *current_node;
+
+	current_node = stack->head;
+	while (current_node != NULL)
+	{
+		printf("index = %d\n value = %d\n", current_node->index,
+				current_node->value);
+		// printf("index is %d\n and value is %d\n", current_node->index, current_node->value);
+		current_node = current_node->next;
+	}
+}
+
+// far too long function
+void	before_refactored_do_cheapest_move(t_stack_list *stack_a, t_stack_list *stack_b)
+{
+	t_stack_node	*cur_b;
+	int				cheapest_cost;
+	int				cheapest_a;
+	int				cheapest_b;
+	int 			cur_cost;
+
+	cur_b = stack_b->head;
+	cheapest_cost = INT_MAX;
+	cur_cost = 0;
+	while (cur_b)
+	{
+		if (cur_b->cost_a > 0 && cur_b->cost_b > 0)
+		{
+			if (cur_b->cost_a > cur_b->cost_b)
+				cur_cost = cur_b->cost_a;
+			else 
+				cur_cost = cur_b->cost_b;
+			if (cur_cost < cheapest_cost)
+			{
+				cheapest_cost = cur_cost;
+				cheapest_a = cur_b->cost_a;
+				cheapest_b = cur_b->cost_b;
+			}
+		}
+		if (cur_b->cost_a < 0 && cur_b->cost_b < 0)
+		{
+			if (cur_b->cost_a < cur_b->cost_b)
+				cur_cost = cur_b->cost_a;
+			else 
+				cur_cost = cur_b->cost_b;
+			if (ft_abs(cur_cost) < cheapest_cost)
+			{
+				cheapest_cost = ft_abs(cur_cost);
+				cheapest_a = cur_b->cost_a;
+				cheapest_b = cur_b->cost_b;
+			}
+		}
+		else 
+		{
+			if (ft_abs(cur_b->cost_a) + ft_abs(cur_b->cost_b) < ft_abs(cheapest_cost))
+			{
+				cheapest_cost = ft_abs(cur_b->cost_a) + ft_abs(cur_b->cost_b);
+				cheapest_a = cur_b->cost_a;
+				cheapest_b = cur_b->cost_b;
+			}
+		}
+		cur_b = cur_b->next;
+	}
+	do_move(stack_a, stack_b, cheapest_a, cheapest_b);
+}
+
+// this version does not optimize the code if the costs are both negative or both positive
+void	old_do_cheapest_move(t_stack_list *stack_a, t_stack_list *stack_b)
+{
+	t_stack_node	*cur_b;
+	int				cheapest_cost;
+	int				cheapest_a;
+	int				cheapest_b;
+
+	cur_b = stack_b->head;
+	cheapest_cost = INT_MAX;
+	while (cur_b)
+	{
+		// find the cheapest cost to move an element from stack_b to stack_a
+		if (ft_abs(cur_b->cost_a)
+			+ ft_abs(cur_b->cost_b) < ft_abs(cheapest_cost))
+		{
+			cheapest_cost = ft_abs(cur_b->cost_a) + ft_abs(cur_b->cost_b);
+			cheapest_a = cur_b->cost_a;
+			cheapest_b = cur_b->cost_b;
+		}
+		cur_b = cur_b->next;
+	}
+	do_move(stack_a, stack_b, cheapest_a, cheapest_b);
+}
+
 // this function does not update the pointers correctly
 void	old_sort_three(t_stack_list *stack)
 {

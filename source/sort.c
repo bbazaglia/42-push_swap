@@ -31,22 +31,6 @@ int	is_sorted(t_stack_list *stack)
 	return (1);
 }
 
-// int find_biggest(t_stack_list *stack)
-// {
-// 	t_stack_node	*current;
-// 	int				biggest;
-
-// 	current = stack->head;
-// 	biggest = current->index;
-// 	while (current)
-// 	{
-// 		if (current->index > biggest)
-// 			biggest = current->index;
-// 		current = current->next;
-// 	}
-// 	return (biggest);
-// }
-
 void	sort_three(t_stack_list *stack)
 {
 	if (stack->head->index > stack->head->next->index
@@ -57,39 +41,20 @@ void	sort_three(t_stack_list *stack)
 		rra(stack);
 	if (stack->head->index > stack->head->next->index)
 		sa(stack);
-	// int biggest;
-	// biggest = find_biggest(stack);
-	// if (biggest == stack->head->index)
-	// 	ra(stack);
-	// else if (biggest == stack->head->next->index)
-	// 	rra(stack);
-	// if (stack->head->index > stack->head->next->index)
-	// 	sa(stack);
 }
 
 void	sort_bigger(t_stack_list *stack_a, t_stack_list *stack_b)
 {
 	populate_stack_b(stack_a, stack_b);
-	
-	// printf("3 ELEMENTS LEFT IN STACK A:\n");
-	// print_stack(stack_a);
-	// printf("*********************\n");
-
 	sort_three(stack_a);
-	// printf("3 ELEMENTS SORTED IN STACK A:\n");
-	// print_stack(stack_a);
-	// printf("*********************\n");
 	while (stack_b->length)
 	{
 		get_positions(stack_a, stack_b);
 		get_cost(stack_a, stack_b);
 		do_cheapest_move(stack_a, stack_b);
-		// printf("STACK AFTER MOVE:\n");
-		// print_stack(stack_a);
-		// printf("*********************\n");
 	}
 	if (is_sorted(stack_a) == 0)
-		adjust_stack_a(stack_a);
+		adjust_stack(stack_a);
 }
 
 void	populate_stack_b(t_stack_list *stack_a, t_stack_list *stack_b)
@@ -123,7 +88,7 @@ void	populate_stack_b(t_stack_list *stack_a, t_stack_list *stack_b)
 	}
 }
 
-void	adjust_stack_a(t_stack_list *stack_a)
+void	adjust_stack(t_stack_list *stack_a)
 {
 	int lowest_pos;
 	int len = stack_a->length;

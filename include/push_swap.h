@@ -1,3 +1,5 @@
+#ifndef PUSH_SWAP_H
+# define PUSH_SWAP_H
 #include <limits.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -27,7 +29,6 @@ typedef struct s_stack_node
 	struct s_stack_node	*prev;
 }						t_stack_node;
 
-// everytime is perfomed an operation that modifies the list, update the head and tail pointer as necessary
 typedef struct s_stack_list
 {
 	t_stack_node		*head;
@@ -89,12 +90,16 @@ int						is_sorted(t_stack_list *stack);
 void					sort_three(t_stack_list *stack);
 void					sort_bigger(t_stack_list *stack_a, t_stack_list *stack_b);
 void 					populate_stack_b(t_stack_list *stack_a, t_stack_list *stack_b);
-void 					adjust_stack_a(t_stack_list *stack_a);
+void 					adjust_stack(t_stack_list *stack_a);
 void					get_cost(t_stack_list *stack_a, t_stack_list *stack_b);
 void					do_cheapest_move(t_stack_list *stack_a, t_stack_list *stack_b);
 void					do_move(t_stack_list *stack_a, t_stack_list *stack_b, int cheapest_cost_a, int cheapest_cost_b);
+int 					get_cheaper_cost(int cost_a, int cost_b);
+
 
 // utils
 long					ft_atol(char *str);
 int						ft_isdigit(int c);
 int						ft_abs(int n);
+
+#endif
