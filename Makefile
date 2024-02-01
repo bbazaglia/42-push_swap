@@ -24,7 +24,7 @@ SRC = assign_index.c \
 
 OBJ = obj
 
-SRC_OBJ = $(SRC:%.c=${OBJ}/%.o)
+SRC_OBJ = $(SRC:%.c=$(OBJ)/%.o)
 
 all: $(NAME)
 
@@ -32,7 +32,7 @@ $(NAME): $(SRC_OBJ)
 	@$(CC) $(CFLAGS) $(SRC_OBJ) -o $(NAME) 
 	@echo "Compilation completed: $@"
 
-${OBJ}/%.o : %.c
+$(OBJ)/%.o : %.c
 	@mkdir -p $(dir $@)	
 	@$(CC) $(CFLAGS) -c $< -o $@ && printf "Compiling: $(notdir $<\n)"
 
