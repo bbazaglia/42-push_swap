@@ -25,52 +25,76 @@ void	do_cheapest_move(t_stack_list *stack_a, t_stack_list *stack_b)
 	do_move(stack_a, stack_b, cheapest_a, cheapest_b);
 }
 
+void	cost_is_positive(t_stack_list *stack_a, t_stack_list *stack_b,
+		int *cheapest_a, int *cheapest_b)
+{
+	if (*cheapest_a > 0 && *cheapest_b > 0)
+	{
+		while (*cheapest_a > 0 && *cheapest_b > 0)
+		{
+			rr(stack_a, stack_b);
+			(*cheapest_a)--;
+			(*cheapest_b)--;
+		}
+	}
+}
+
+void	cost_is_negative(t_stack_list *stack_a, t_stack_list *stack_b,
+		int *cheapest_a, int *cheapest_b)
+{
+	if (*cheapest_a < 0 && *cheapest_b < 0)
+	{
+		while (*cheapest_a < 0 && *cheapest_b < 0)
+		{
+			rrr(stack_a, stack_b);
+			(*cheapest_a)++;
+			(*cheapest_b)++;
+		}
+	}
+}
+
+void	cost_a_is_positive(t_stack_list *stack_a, t_stack_list *stack_b,
+		int *cheapest_a, int *cheapest_b)
+{
+	if (*cheapest_a >= 0 && *cheapest_b <= 0)
+	{
+		while (*cheapest_a > 0)
+		{
+			ra(stack_a);
+			(*cheapest_a)--;
+		}
+		while (*cheapest_b < 0)
+		{
+			rrb(stack_b);
+			(*cheapest_b)++;
+		}
+	}
+}
+
+void	cost_b_is_positive(t_stack_list *stack_a, t_stack_list *stack_b,
+		int *cheapest_a, int *cheapest_b)
+{
+	if (*cheapest_a <= 0 && *cheapest_b >= 0)
+	{
+		while (*cheapest_a < 0)
+		{
+			rra(stack_a);
+			(*cheapest_a)++;
+		}
+		while (*cheapest_b > 0)
+		{
+			rb(stack_b);
+			(*cheapest_b)--;
+		}
+	}
+}
+
 void	do_move(t_stack_list *stack_a, t_stack_list *stack_b, int cheapest_a,
 		int cheapest_b)
 {
-	if (cheapest_a > 0 && cheapest_b > 0)
-	{
-		while (cheapest_a > 0 && cheapest_b > 0)
-		{
-			rr(stack_a, stack_b);
-			cheapest_a--;
-			cheapest_b--;
-		}
-	}
-	else if (cheapest_a < 0 && cheapest_b < 0)
-	{
-		while (cheapest_a < 0 && cheapest_b < 0)
-		{
-			rrr(stack_a, stack_b);
-			cheapest_a++;
-			cheapest_b++;
-		}
-	}
-	if (cheapest_a >= 0 && cheapest_b <= 0)
-	{
-		while (cheapest_a > 0)
-		{
-			ra(stack_a);
-			cheapest_a--;
-		}
-		while (cheapest_b < 0)
-		{
-			rrb(stack_b);
-			cheapest_b++;
-		}
-	}
-	else if (cheapest_a <= 0 && cheapest_b >= 0)
-	{
-		while (cheapest_a < 0)
-		{
-			rra(stack_a);
-			cheapest_a++;
-		}
-		while (cheapest_b > 0)
-		{
-			rb(stack_b);
-			cheapest_b--;
-		}
-	}
+	cost_is_positive(stack_a, stack_b, &cheapest_a, &cheapest_b);
+	cost_is_negative(stack_a, stack_b, &cheapest_a, &cheapest_b);
+	cost_a_is_positive(stack_a, stack_b, &cheapest_a, &cheapest_b);
+	cost_b_is_positive(stack_a, stack_b, &cheapest_a, &cheapest_b);
 	pa(stack_b, stack_a);
 }

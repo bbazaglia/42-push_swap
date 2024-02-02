@@ -160,7 +160,7 @@ void	merge_sort(t_stack_node **head_ref)
 //     // free the temporary stack and hash table
 //     // clear_stack(temp_stack);
 //     // free(value_to_index);
-// 	print_stack(stack);
+// // 	print_stack(stack);
 // }
 
 // mia's version: 
