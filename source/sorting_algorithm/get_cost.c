@@ -1,52 +1,88 @@
 #include "push_swap.h"
 
-void get_cost(t_stack_list *stack_a, t_stack_list *stack_b)
+void	get_cost(t_stack_list *stack_a, t_stack_list *stack_b)
 {
-    t_stack_node *cur_b;
+	t_stack_node	*cur_b;
 
-
-    cur_b = stack_b->head;
-    while (cur_b)
-    {
-        // calculate cost for the stack_b element get to the top of the list based on its position
-        cur_b->cost_b = cur_b->current_pos;
-        if (cur_b->current_pos > stack_b->length / 2)
-            cur_b->cost_b = (stack_b->length - cur_b->current_pos) * -1;
-
-        // printf("COST B: %d, INDEX B: %d and POS B = %d\n", cur_b->cost_b, cur_b->index, cur_b->current_pos);
-
-        // calculate cost for the stack_b element get to the top of the list based on its target position
-        cur_b->cost_a = cur_b->target_pos;
-        if (cur_b->target_pos > stack_a->length / 2)
-            cur_b->cost_a = (stack_a->length - cur_b->target_pos) * -1;
-
-        // printf("COST A: %d, INDEX A: %d and POS A = %d\n", cur_b->cost_a, cur_b->index, cur_b->current_pos);
-
-        cur_b = cur_b->next;
-    }
+	cur_b = stack_b->head;
+	while (cur_b)
+	{
+		// calculate cost for the stack_b element get to the top of the list based on its position
+		cur_b->cost_b = cur_b->current_pos;
+		if (cur_b->current_pos > stack_b->length / 2)
+			cur_b->cost_b = (stack_b->length - cur_b->current_pos) * -1;
+		// printf("COST B: %d, INDEX B: %d and POS B = %d\n", cur_b->cost_b, cur_b->index, cur_b->current_pos);
+		// calculate cost for the stack_b element get to the top of the list based on its target position
+		cur_b->cost_a = cur_b->target_pos;
+		if (cur_b->target_pos > stack_a->length / 2)
+			cur_b->cost_a = (stack_a->length - cur_b->target_pos) * -1;
+		// printf("COST A: %d, INDEX A: %d and POS A = %d\n", cur_b->cost_a, cur_b->index, cur_b->current_pos);
+		cur_b = cur_b->next;
+	}
 }
 
-int get_cheaper_cost(int cost_a, int cost_b) 
+void	cost_is_positive(t_stack_list *stack_a, t_stack_list *stack_b,
+		int *cheapest_a, int *cheapest_b)
 {
-    int result;
+	if (*cheapest_a > 0 && *cheapest_b > 0)
+	{
+		while (*cheapest_a > 0 && *cheapest_b > 0)
+		{
+			rr(stack_a, stack_b);
+			(*cheapest_a)--;
+			(*cheapest_b)--;
+		}
+	}
+}
 
-    if (cost_a > 0 && cost_b > 0) 
-    {
-        if (cost_a > cost_b) 
-            result = cost_a;
-        else 
-            result = cost_b;
-    } 
-    else if (cost_a < 0 && cost_b < 0) 
-    {
-        if (cost_a < cost_b) 
-            result = cost_a;
-        else 
-            result = cost_b;
-    } 
-    else 
-        result = ft_abs(cost_a) + ft_abs(cost_b);
-    return (result);
+void	cost_is_negative(t_stack_list *stack_a, t_stack_list *stack_b,
+		int *cheapest_a, int *cheapest_b)
+{
+	if (*cheapest_a < 0 && *cheapest_b < 0)
+	{
+		while (*cheapest_a < 0 && *cheapest_b < 0)
+		{
+			rrr(stack_a, stack_b);
+			(*cheapest_a)++;
+			(*cheapest_b)++;
+		}
+	}
+}
+
+void	cost_a_is_positive(t_stack_list *stack_a, t_stack_list *stack_b,
+		int *cheapest_a, int *cheapest_b)
+{
+	if (*cheapest_a >= 0 && *cheapest_b <= 0)
+	{
+		while (*cheapest_a > 0)
+		{
+			ra(stack_a);
+			(*cheapest_a)--;
+		}
+		while (*cheapest_b < 0)
+		{
+			rrb(stack_b);
+			(*cheapest_b)++;
+		}
+	}
+}
+
+void	cost_b_is_positive(t_stack_list *stack_a, t_stack_list *stack_b,
+		int *cheapest_a, int *cheapest_b)
+{
+	if (*cheapest_a <= 0 && *cheapest_b >= 0)
+	{
+		while (*cheapest_a < 0)
+		{
+			rra(stack_a);
+			(*cheapest_a)++;
+		}
+		while (*cheapest_b > 0)
+		{
+			rb(stack_b);
+			(*cheapest_b)--;
+		}
+	}
 }
 
 /* About the cost:
@@ -69,7 +105,8 @@ stack:  [1] 7
 
 If our target element is 5, it's position is 2 (it is in the top half).
     By rotating the stack, we would have to bring the top element down once.
-    By reverse rotating the stack, we would have to bring the bottom element up 5 times.
+    By reverse rotating the stack,
+	we would have to bring the bottom element up 5 times.
 
 
 (2) Why assign a negative value to reverse rotate?
@@ -77,8 +114,11 @@ To distinguish between regular rotation and reverse rotation during the executio
 This optimizes simultaneous operations.
 
 * Example: 
-If the costs of stack A and stack B have the same sign (both positive or both negative), both stacks require the same type of operation.
-If the cost is negative, it's a reverse rotate operation, and if the cost is positive, it's a regular rotate operation.
-If the stack A has the cost of -1 and the stack B also has the cost of 1, we can execute rrr instead of rra + rrb.
+If the costs of stack A and stack B have the same sign (both positive or both negative),
+	both stacks require the same type of operation.
+If the cost is negative, it's a reverse rotate operation,
+	and if the cost is positive, it's a regular rotate operation.
+If the stack A has the cost of -1 and the stack B also has the cost of 1,
+	we can execute rrr instead of rra + rrb.
 
 */
