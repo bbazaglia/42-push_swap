@@ -1,54 +1,98 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: bbazagli <bbazagli@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/02/05 14:25:58 by bbazagli          #+#    #+#              #
+#    Updated: 2024/02/05 15:31:33 by bbazagli         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME = push_swap
+
+BONUS = checker
 
 CC = cc
 
 CFLAGS = -Wall -Wextra -Werror -g3 
 # -fsanitize=address
 
-VPATH = source ./source/moves ./source/input_check ./source/sorting_algorithm ./source/stack
+VPATH = source ./source/moves ./source/sorting_algorithm  \
+		./LIBFT/src \
+		checker_bonus
 
-INCLUDE = -I./include
+INCLUDE = -I./include -I ./LIBFT/include
+
+LIBFT = ./LIBFT/libft.a
 
 SRC = assign_index.c \
-		ft_split.c \
 		cheapest_move.c \
 		check_input.c \
 		get_cost.c \
 		get_position.c \
-		linked_list.c \
+		stack.c \
 		move_push.c \
 		move_reverse_rotate.c \
 		move_rotate.c \
 		move_swap.c \
 		push_swap.c \
+		sort.c 
+
+SRC_BONUS = assign_index.c \
+		cheapest_move.c \
+		check_input.c \
+		get_cost.c \
+		get_position.c \
+		stack.c \
+		move_push.c \
+		move_reverse_rotate.c \
+		move_rotate.c \
+		move_swap.c \
 		sort.c \
-		utils.c
+		check_sort.c \
+		push_bonus.c \
+		reverse_rotate_bonus.c \
+		rotate_bonus.c \
+		swap_bonus.c 
 
 OBJ = obj
 
 SRC_OBJ = $(SRC:%.c=$(OBJ)/%.o)
 
-all: $(NAME)
+SRC_OBJ_BONUS = $(SRC_BONUS:%.c=$(OBJ)/%.o)
 
-$(NAME): $(SRC_OBJ)
-	@$(CC) $(CFLAGS) $(SRC_OBJ) -o $(NAME) 
-	@echo "Compilation completed: $@"
+all: libft $(NAME)
+
+$(NAME): libft $(SRC_OBJ) 
+	@$(CC) $(CFLAGS) $(SRC_OBJ) $(LIBFT) -o $(NAME) 
+#	@echo "Compilation completed: $@"
+
+bonus: libft $(SRC_OBJ_BONUS) 
+	@$(CC) $(CFLAGS) $(SRC_OBJ_BONUS) $(LIBFT) -o $(BONUS) 
+#	@echo "Compilation completed: $@"
+
+libft:
+	@make -C ./LIBFT
 
 $(OBJ)/%.o : %.c
 	@mkdir -p $(dir $@)	
 	@$(CC) $(CFLAGS) -c $< -o $@ $(INCLUDE) && printf "Compiling: $(notdir $<\n)"
 
 clean: 
+	@make -C ./LIBFT clean --silent
 	@rm -rf $(OBJ)
 	@echo "objects removed" 
 
 fclean: clean
-	@rm -f $(NAME)
+	@make -C ./LIBFT fclean --silent 
+	@rm -f $(NAME) $(BONUS)
 	@echo "executable removed"
 
 re: fclean all
 
-.PHONY: all clean fclean re 
+.PHONY: all clean fclean re libft bonus
 
 #checker
 

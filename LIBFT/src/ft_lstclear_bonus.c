@@ -1,31 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_lstclear_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bbazagli <bbazagli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/05 14:25:38 by bbazagli          #+#    #+#             */
-/*   Updated: 2024/02/05 14:31:38 by bbazagli         ###   ########.fr       */
+/*   Created: 2023/08/04 14:07:50 by bbazagli          #+#    #+#             */
+/*   Updated: 2023/10/24 15:41:56 by bbazagli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	t_stack_list	*stack_a;
-	t_stack_list	*stack_b;
+	t_list	*tmp;
 
-	stack_a = NULL;
-	stack_b = NULL;
-	argv = check_input(argc, argv);
-	stack_a = create_stack(argc, argv);
-	stack_b = create_stack(0, NULL);
-	check_double(stack_a);
-	assign_index(stack_a);
-	sort_stack(stack_a, stack_b);
-	clear_stack(stack_a);
-	clear_stack(stack_b);
-	return (0);
+	if (lst == NULL || del == NULL)
+		return ;
+	while (*lst != NULL)
+	{
+		tmp = (*lst)->next;
+		del((*lst)->content);
+		free(*lst);
+		*lst = tmp;
+	}
+	*lst = NULL;
 }

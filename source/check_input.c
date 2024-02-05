@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   check_input.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bbazagli <bbazagli@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/05 14:22:41 by bbazagli          #+#    #+#             */
+/*   Updated: 2024/02/05 14:41:10 by bbazagli         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
-#include <string.h>
 
 char	**check_input(int argc, char **argv)
 {
 	int	i;
+
 	if (argc == 2)
 	{
 		argv = ft_split(argv[1], ' ');
@@ -11,11 +23,11 @@ char	**check_input(int argc, char **argv)
 			print_error();
 		i = 0;
 		while (argv[i])
-        {
-            check_characters(argv[i]);
-            check_limit(argv[i]);
+		{
+			check_characters(argv[i]);
+			check_limit(argv[i]);
 			i++;
-        }
+		}
 	}
 	else if (argc >= 3)
 	{
@@ -27,8 +39,8 @@ char	**check_input(int argc, char **argv)
 			i++;
 		}
 	}
-	else 
-		print_error();	
+	else
+		print_error();
 	return (argv);
 }
 
@@ -73,4 +85,3 @@ void	check_double(t_stack_list *stack)
 		tmp = tmp->next;
 	}
 }
-

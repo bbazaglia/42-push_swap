@@ -1,31 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   reverse_rotate_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bbazagli <bbazagli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/05 14:25:38 by bbazagli          #+#    #+#             */
-/*   Updated: 2024/02/05 14:31:38 by bbazagli         ###   ########.fr       */
+/*   Created: 2024/02/05 15:29:20 by bbazagli          #+#    #+#             */
+/*   Updated: 2024/02/05 15:34:40 by bbazagli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "checker.h"
 
-int	main(int argc, char **argv)
+void	rra_bonus(t_stack_list *stack_a)
 {
-	t_stack_list	*stack_a;
-	t_stack_list	*stack_b;
+	reverse_rotate(stack_a);
+}
 
-	stack_a = NULL;
-	stack_b = NULL;
-	argv = check_input(argc, argv);
-	stack_a = create_stack(argc, argv);
-	stack_b = create_stack(0, NULL);
-	check_double(stack_a);
-	assign_index(stack_a);
-	sort_stack(stack_a, stack_b);
-	clear_stack(stack_a);
-	clear_stack(stack_b);
-	return (0);
+void	rrb_bonus(t_stack_list *stack_b)
+{
+	reverse_rotate(stack_b);
+}
+
+void	rrr_bonus(t_stack_list *stack_a, t_stack_list *stack_b)
+{
+	reverse_rotate(stack_a);
+	reverse_rotate(stack_b);
 }

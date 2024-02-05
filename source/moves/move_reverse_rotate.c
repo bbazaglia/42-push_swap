@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   move_reverse_rotate.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bbazagli <bbazagli@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/05 14:23:17 by bbazagli          #+#    #+#             */
+/*   Updated: 2024/02/05 14:37:38 by bbazagli         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 // the last element becomes the first one
@@ -7,19 +19,11 @@ void	reverse_rotate(t_stack_list *stack)
 
 	if (stack->head == NULL || stack->head->next == NULL)
 		return ;
-
-	// tmp stores the last node
 	tmp = stack->tail;
-
-	// update the tail pointer to the second last node
 	stack->tail = stack->tail->prev;
 	stack->tail->next = NULL;
-	
-	// add the last node to the front of the stack
 	tmp->next = stack->head;
 	tmp->prev = NULL;
-
-	// update the head pointer to the last node
 	stack->head->prev = tmp;
 	stack->head = tmp;
 }

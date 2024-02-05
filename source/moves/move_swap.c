@@ -1,24 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   move_swap.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bbazagli <bbazagli@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/05 14:23:42 by bbazagli          #+#    #+#             */
+/*   Updated: 2024/02/05 14:36:34 by bbazagli         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
-
-// void	swap(t_stack_list *stack)
-// {
-// 	t_stack_node	*temp;
-
-// 	if (stack->head == NULL || stack->head->next == NULL)
-// 		return ;
-// 	temp = stack->head;
-// 	stack->head = stack->head->next;
-// 	temp->next = stack->head->next;
-// 	stack->head->next = temp;
-// }
 
 void	swap(t_stack_list *stack)
 {
-	int tmp;
+	int	tmp;
 
 	if (stack->head == NULL || stack->head->next == NULL)
 		return ;
-
 	tmp = stack->head->value;
 	stack->head->value = stack->head->next->value;
 	stack->head->next->value = tmp;
@@ -26,21 +25,6 @@ void	swap(t_stack_list *stack)
 	stack->head->index = stack->head->next->index;
 	stack->head->next->index = tmp;
 }
-
-// void    swap(t_stack_list *stack)
-// {
-//     t_stack_node    *temp;
-
-//     if (stack->head == NULL || stack->head->next == NULL)
-//         return ;
-//     temp = stack->head;
-//     temp->prev = stack->head->next;
-//     stack->head = stack->head->next;
-//     temp->next = stack->head->next;
-//     stack->head->prev = NULL;
-//     stack->head->next = temp;
-//     stack->head->next->next->prev = stack->head->next;
-// }
 
 void	sa(t_stack_list *stack_a)
 {

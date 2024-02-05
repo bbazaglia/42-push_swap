@@ -1,31 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_lstadd_back_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bbazagli <bbazagli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/05 14:25:38 by bbazagli          #+#    #+#             */
-/*   Updated: 2024/02/05 14:31:38 by bbazagli         ###   ########.fr       */
+/*   Created: 2023/08/04 14:05:57 by bbazagli          #+#    #+#             */
+/*   Updated: 2023/10/24 15:41:49 by bbazagli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	t_stack_list	*stack_a;
-	t_stack_list	*stack_b;
+	t_list	*current;
 
-	stack_a = NULL;
-	stack_b = NULL;
-	argv = check_input(argc, argv);
-	stack_a = create_stack(argc, argv);
-	stack_b = create_stack(0, NULL);
-	check_double(stack_a);
-	assign_index(stack_a);
-	sort_stack(stack_a, stack_b);
-	clear_stack(stack_a);
-	clear_stack(stack_b);
-	return (0);
+	if (lst == NULL || new == NULL)
+		return ;
+	if (*lst == NULL)
+	{
+		*lst = new;
+		return ;
+	}
+	current = *lst;
+	while (current->next != NULL)
+		current = current->next;
+	current->next = new;
 }

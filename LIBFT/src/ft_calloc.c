@@ -1,31 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bbazagli <bbazagli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/05 14:25:38 by bbazagli          #+#    #+#             */
-/*   Updated: 2024/02/05 14:31:38 by bbazagli         ###   ########.fr       */
+/*   Created: 2023/07/25 14:12:28 by bbazagli          #+#    #+#             */
+/*   Updated: 2023/10/24 15:41:38 by bbazagli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+void	*ft_calloc(size_t nelem, size_t elsize)
 {
-	t_stack_list	*stack_a;
-	t_stack_list	*stack_b;
+	void	*ptr;
+	size_t	total_size;
 
-	stack_a = NULL;
-	stack_b = NULL;
-	argv = check_input(argc, argv);
-	stack_a = create_stack(argc, argv);
-	stack_b = create_stack(0, NULL);
-	check_double(stack_a);
-	assign_index(stack_a);
-	sort_stack(stack_a, stack_b);
-	clear_stack(stack_a);
-	clear_stack(stack_b);
-	return (0);
+	if (nelem == 0 || elsize == 0)
+		return (malloc(0));
+	total_size = nelem * elsize;
+	if (total_size / elsize != nelem)
+		return (NULL);
+	ptr = malloc(total_size);
+	if (ptr == NULL)
+		return (NULL);
+	ft_memset(ptr, 0, total_size);
+	return (ptr);
 }

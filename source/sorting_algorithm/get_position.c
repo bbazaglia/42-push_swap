@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_position.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bbazagli <bbazagli@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/05 14:25:18 by bbazagli          #+#    #+#             */
+/*   Updated: 2024/02/05 14:33:40 by bbazagli         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	get_positions(t_stack_list *stack_a, t_stack_list *stack_b)
 {
 	t_stack_node	*cur_b;
-	int target_pos;
+	int				target_pos;
 
 	cur_b = stack_b->head;
 	get_cur_pos(stack_a);
@@ -32,14 +44,14 @@ void	get_cur_pos(t_stack_list *stack)
 	}
 }
 
-int	get_target_pos(t_stack_list *stack, int index_b, int target_index, int target_pos)
+int	get_target_pos(t_stack_list *stack, int index_b, int target_index,
+		int target_pos)
 {
 	t_stack_node	*current_a;
 
 	current_a = stack->head;
 	while (current_a)
 	{
-		// find the smallest index in stack_a that is bigger than cur_b->index
 		if (current_a->index > index_b && current_a->index < target_index)
 		{
 			target_index = current_a->index;
@@ -47,12 +59,9 @@ int	get_target_pos(t_stack_list *stack, int index_b, int target_index, int targe
 		}
 		current_a = current_a->next;
 	}
-
 	if (target_index != INT_MAX)
 		return (target_pos);
-
 	current_a = stack->head;
-	// if no target_pos is found, find the smallest index in stack_a
 	while (current_a)
 	{
 		if (current_a->index < target_index)
@@ -65,7 +74,7 @@ int	get_target_pos(t_stack_list *stack, int index_b, int target_index, int targe
 	return (target_pos);
 }
 
-int get_lowest_index_pos(t_stack_list *stack)
+int	get_lowest_index_pos(t_stack_list *stack)
 {
 	t_stack_node	*current;
 	int				lowest_index;

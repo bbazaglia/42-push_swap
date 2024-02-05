@@ -1,31 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bbazagli <bbazagli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/05 14:25:38 by bbazagli          #+#    #+#             */
-/*   Updated: 2024/02/05 14:31:38 by bbazagli         ###   ########.fr       */
+/*   Created: 2023/07/26 10:13:58 by bbazagli          #+#    #+#             */
+/*   Updated: 2023/10/24 15:44:03 by bbazagli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+char	*ft_strnstr(const char *s1, const char *s2, size_t len)
 {
-	t_stack_list	*stack_a;
-	t_stack_list	*stack_b;
+	size_t	i;
+	size_t	j;
 
-	stack_a = NULL;
-	stack_b = NULL;
-	argv = check_input(argc, argv);
-	stack_a = create_stack(argc, argv);
-	stack_b = create_stack(0, NULL);
-	check_double(stack_a);
-	assign_index(stack_a);
-	sort_stack(stack_a, stack_b);
-	clear_stack(stack_a);
-	clear_stack(stack_b);
-	return (0);
+	if (*s2 == '\0')
+		return ((char *)s1);
+	i = 0;
+	while (i < len && s1[i])
+	{
+		j = 0;
+		while ((i + j) < len && s1[i + j] == s2[j])
+		{
+			j++;
+			if (s2[j] == '\0')
+				return ((char *)&s1[i]);
+		}
+		i++;
+	}
+	return (NULL);
 }

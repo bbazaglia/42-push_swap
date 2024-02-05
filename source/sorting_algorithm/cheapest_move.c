@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cheapest_move.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bbazagli <bbazagli@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/05 14:24:31 by bbazagli          #+#    #+#             */
+/*   Updated: 2024/02/05 14:24:35 by bbazagli         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	do_cheapest_move(t_stack_list *stack_a, t_stack_list *stack_b)
@@ -25,27 +37,27 @@ void	do_cheapest_move(t_stack_list *stack_a, t_stack_list *stack_b)
 	do_move(stack_a, stack_b, cheapest_a, cheapest_b);
 }
 
-int get_cheaper_cost(int cost_a, int cost_b) 
+int	get_cheaper_cost(int cost_a, int cost_b)
 {
-    int result;
+	int	result;
 
-    if (cost_a > 0 && cost_b > 0) 
-    {
-        if (cost_a > cost_b) 
-            result = cost_a;
-        else 
-            result = cost_b;
-    } 
-    else if (cost_a < 0 && cost_b < 0) 
-    {
-        if (cost_a < cost_b) 
-            result = cost_a;
-        else 
-            result = cost_b;
-    } 
-    else 
-        result = ft_abs(cost_a) + ft_abs(cost_b);
-    return (result);
+	if (cost_a > 0 && cost_b > 0)
+	{
+		if (cost_a > cost_b)
+			result = cost_a;
+		else
+			result = cost_b;
+	}
+	else if (cost_a < 0 && cost_b < 0)
+	{
+		if (cost_a < cost_b)
+			result = cost_a;
+		else
+			result = cost_b;
+	}
+	else
+		result = ft_abs(cost_a) + ft_abs(cost_b);
+	return (result);
 }
 
 void	do_move(t_stack_list *stack_a, t_stack_list *stack_b, int cheapest_a,

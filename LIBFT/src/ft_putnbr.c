@@ -1,31 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bbazagli <bbazagli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/05 14:25:38 by bbazagli          #+#    #+#             */
-/*   Updated: 2024/02/05 14:31:38 by bbazagli         ###   ########.fr       */
+/*   Created: 2023/09/04 17:39:01 by bbazagli          #+#    #+#             */
+/*   Updated: 2023/10/24 15:43:12 by bbazagli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+int	ft_putnbr(int n)
 {
-	t_stack_list	*stack_a;
-	t_stack_list	*stack_b;
+	size_t	num;
+	int		count;
 
-	stack_a = NULL;
-	stack_b = NULL;
-	argv = check_input(argc, argv);
-	stack_a = create_stack(argc, argv);
-	stack_b = create_stack(0, NULL);
-	check_double(stack_a);
-	assign_index(stack_a);
-	sort_stack(stack_a, stack_b);
-	clear_stack(stack_a);
-	clear_stack(stack_b);
-	return (0);
+	num = (size_t)n;
+	count = 0;
+	if (n < 0)
+	{
+		num *= -1;
+		count += ft_putchar('-');
+	}
+	if (num < 10)
+		count += ft_putchar(num + '0');
+	else
+	{
+		count += ft_putnbr(num / 10);
+		count += ft_putnbr(num % 10);
+	}
+	return (count);
 }

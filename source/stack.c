@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   stack.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bbazagli <bbazagli@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/05 14:25:48 by bbazagli          #+#    #+#             */
+/*   Updated: 2024/02/05 14:30:05 by bbazagli         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 t_stack_list	*create_stack(int argc, char **argv)
@@ -88,9 +100,9 @@ void	copy_stack(t_stack_list *src, t_stack_list *dest)
 
 void	populate_stack_b(t_stack_list *stack_a, t_stack_list *stack_b)
 {
-	int len;
-	int pushed;
-	int i;
+	int	len;
+	int	pushed;
+	int	i;
 
 	len = stack_a->length;
 	pushed = 0;

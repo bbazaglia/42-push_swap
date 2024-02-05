@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sort.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bbazagli <bbazagli@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/05 14:25:29 by bbazagli          #+#    #+#             */
+/*   Updated: 2024/02/05 14:32:34 by bbazagli         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	sort_stack(t_stack_list *stack_a, t_stack_list *stack_b)
@@ -37,7 +49,7 @@ void	sort_three(t_stack_list *stack)
 		&& stack->head->index > stack->head->next->next->index)
 		ra(stack);
 	else if (stack->head->next->index > stack->head->index
-			&& stack->head->next->index > stack->head->next->next->index)
+		&& stack->head->next->index > stack->head->next->next->index)
 		rra(stack);
 	if (stack->head->index > stack->head->next->index)
 		sa(stack);
@@ -57,12 +69,12 @@ void	sort_bigger(t_stack_list *stack_a, t_stack_list *stack_b)
 		adjust_stack(stack_a);
 }
 
-
 void	adjust_stack(t_stack_list *stack_a)
 {
-	int lowest_pos;
-	int len = stack_a->length;
+	int	lowest_pos;
+	int	len;
 
+	len = stack_a->length;
 	lowest_pos = get_lowest_index_pos(stack_a);
 	if (lowest_pos > len / 2)
 	{
@@ -81,4 +93,3 @@ void	adjust_stack(t_stack_list *stack_a)
 		}
 	}
 }
-

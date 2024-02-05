@@ -1,31 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bbazagli <bbazagli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/05 14:25:38 by bbazagli          #+#    #+#             */
-/*   Updated: 2024/02/05 14:31:38 by bbazagli         ###   ########.fr       */
+/*   Created: 2023/07/27 10:31:29 by bbazagli          #+#    #+#             */
+/*   Updated: 2023/10/24 15:43:07 by bbazagli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+void	ft_putnbr_fd(int n, int fd)
 {
-	t_stack_list	*stack_a;
-	t_stack_list	*stack_b;
+	char		number[4096];
+	long int	num;
+	int			i;
 
-	stack_a = NULL;
-	stack_b = NULL;
-	argv = check_input(argc, argv);
-	stack_a = create_stack(argc, argv);
-	stack_b = create_stack(0, NULL);
-	check_double(stack_a);
-	assign_index(stack_a);
-	sort_stack(stack_a, stack_b);
-	clear_stack(stack_a);
-	clear_stack(stack_b);
-	return (0);
+	num = n;
+	i = 0;
+	if (num == 0)
+		write(fd, "0", 1);
+	else if (num < 0)
+	{
+		write(fd, "-", 1);
+		num *= -1;
+	}
+	while (num > 0)
+	{
+		number[i] = (num % 10) + '0';
+		i++;
+		num = num / 10;
+	}
+	while (--i >= 0)
+		write(fd, &number[i], 1);
 }

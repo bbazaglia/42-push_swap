@@ -1,31 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bbazagli <bbazagli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/05 14:25:38 by bbazagli          #+#    #+#             */
-/*   Updated: 2024/02/05 14:31:38 by bbazagli         ###   ########.fr       */
+/*   Created: 2023/07/25 15:14:59 by bbazagli          #+#    #+#             */
+/*   Updated: 2023/10/24 15:42:44 by bbazagli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	t_stack_list	*stack_a;
-	t_stack_list	*stack_b;
+	size_t	i;
 
-	stack_a = NULL;
-	stack_b = NULL;
-	argv = check_input(argc, argv);
-	stack_a = create_stack(argc, argv);
-	stack_b = create_stack(0, NULL);
-	check_double(stack_a);
-	assign_index(stack_a);
-	sort_stack(stack_a, stack_b);
-	clear_stack(stack_a);
-	clear_stack(stack_b);
-	return (0);
+	if (dest == NULL && src == NULL)
+		return (NULL);
+	if (dest < src)
+	{
+		i = 0;
+		while (i < n)
+		{
+			((unsigned char *)dest)[i] = ((unsigned char *)src)[i];
+			i++;
+		}
+	}
+	else
+	{
+		i = n;
+		while (i > 0)
+		{
+			((char *)dest)[i - 1] = ((char *)src)[i - 1];
+			i--;
+		}
+	}
+	return (dest);
 }
