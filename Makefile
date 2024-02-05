@@ -6,7 +6,7 @@
 #    By: bbazagli <bbazagli@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/05 14:25:58 by bbazagli          #+#    #+#              #
-#    Updated: 2024/02/05 15:31:33 by bbazagli         ###   ########.fr        #
+#    Updated: 2024/02/05 15:46:08 by bbazagli         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,6 @@ CFLAGS = -Wall -Wextra -Werror -g3
 # -fsanitize=address
 
 VPATH = source ./source/moves ./source/sorting_algorithm  \
-		./LIBFT/src \
 		checker_bonus
 
 INCLUDE = -I./include -I ./LIBFT/include
@@ -94,40 +93,65 @@ re: fclean all
 
 .PHONY: all clean fclean re libft bonus
 
-#checker
+#rules for checker_bonus
+checker2: $(NAME) bonus
+	$(eval ARG = $(shell shuf -i 0-100 -n 2))
+	./push_swap $(ARG) | ./checker $(ARG)
+	@echo -n "Instructions: "
+	@./push_swap $(ARG) | wc -l
 
-test2: $(NAME)
+checker3: $(NAME) bonus
+	$(eval ARG = $(shell shuf -i 0-100 -n 3))
+	./push_swap $(ARG) | ./checker $(ARG)
+	@echo -n "Instructions: "
+	@./push_swap $(ARG) | wc -l
+	
+checker5: $(NAME) bonus
+	$(eval ARG = $(shell shuf -i 0-5000 -n 5))
+	./push_swap $(ARG) | ./checker $(ARG)
+	@echo -n "Instructions: "
+	@./push_swap $(ARG) | wc -l
+
+checker100: $(NAME) bonus	
+	$(eval ARG = $(shell shuf -i 0-5000 -n 100))
+	./push_swap $(ARG) | ./checker $(ARG)
+	@echo -n "Instructions: "
+	@./push_swap $(ARG) | wc -l
+
+checker500: $(NAME) bonus	
+	$(eval ARG = $(shell shuf -i 0-5000 -n 500))
+	./push_swap $(ARG) | ./checker $(ARG)
+	@echo -n "Instructions: "
+	@./push_swap $(ARG) | wc -l
+
+
+# rules for checker_linux
+test2: $(NAME) 
 	$(eval ARG = $(shell shuf -i 0-100 -n 2))
 	./push_swap $(ARG) | ./checker_linux $(ARG)
 	@echo -n "Instructions: "
 	@./push_swap $(ARG) | wc -l
 
-test3: $(NAME)	
+test3: $(NAME) 
 	$(eval ARG = $(shell shuf -i 0-100 -n 3))
 	./push_swap $(ARG) | ./checker_linux $(ARG)
 	@echo -n "Instructions: "
 	@./push_swap $(ARG) | wc -l
 
-test5: $(NAME)	
+test5: $(NAME) 
 	$(eval ARG = $(shell shuf -i 0-5000 -n 5))
 	./push_swap $(ARG) | ./checker_linux $(ARG)
 	@echo -n "Instructions: "
 	@./push_swap $(ARG) | wc -l
 
-test100: $(NAME)	
+test100: $(NAME) 
 	$(eval ARG = $(shell shuf -i 0-5000 -n 100))
 	./push_swap $(ARG) | ./checker_linux $(ARG)
 	@echo -n "Instructions: "
 	@./push_swap $(ARG) | wc -l
 
-test500: $(NAME)	
+test500: $(NAME) 
 	$(eval ARG = $(shell shuf -i 0-5000 -n 500))
-	./push_swap $(ARG) | ./checker_linux $(ARG)
-	@echo -n "Instructions: "
-	@./push_swap $(ARG) | wc -l
-
-test1000: $(NAME)	
-	$(eval ARG = $(shell shuf -i 0-5000 -n 1000))
 	./push_swap $(ARG) | ./checker_linux $(ARG)
 	@echo -n "Instructions: "
 	@./push_swap $(ARG) | wc -l

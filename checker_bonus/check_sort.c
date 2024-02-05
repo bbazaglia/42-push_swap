@@ -6,7 +6,7 @@
 /*   By: bbazagli <bbazagli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 14:59:51 by bbazagli          #+#    #+#             */
-/*   Updated: 2024/02/05 15:35:17 by bbazagli         ###   ########.fr       */
+/*   Updated: 2024/02/05 15:55:15 by bbazagli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ int	main(int argc, char **argv)
 	check_double(stack_a);
 	assign_index(stack_a);
 	check_sort(stack_a, stack_b);
+	clear_stack(stack_a);
+	clear_stack(stack_b);
 	return (0);
 }
 
@@ -42,9 +44,6 @@ void	check_sort(t_stack_list *stack_a, t_stack_list *stack_b)
 		write(1, "OK\n", 3);
 	else
 		write(1, "KO\n", 3);
-	clear_stack(stack_a);
-	clear_stack(stack_b);
-	exit(0);
 }
 
 void	read_moves(t_stack_list *stack_a, t_stack_list *stack_b)
