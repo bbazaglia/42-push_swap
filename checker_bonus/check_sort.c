@@ -24,26 +24,10 @@ int	main(int argc, char **argv)
 	stack_b = create_stack(0, NULL);
 	check_double(stack_a);
 	assign_index(stack_a);
-	check_sort(stack_a, stack_b);
+	read_moves(stack_a, stack_b);
 	clear_stack(stack_a);
 	clear_stack(stack_b);
 	return (0);
-}
-
-void	check_sort(t_stack_list *stack_a, t_stack_list *stack_b)
-{
-	if (is_sorted(stack_a) == 1)
-	{
-		write(1, "The stack is already sorted\n", 28);
-		clear_stack(stack_a);
-		clear_stack(stack_b);
-		exit(0);
-	}
-	read_moves(stack_a, stack_b);
-	if (is_sorted(stack_a) == 1 && stack_b->length == 0)
-		write(1, "OK\n", 3);
-	else
-		write(1, "KO\n", 3);
 }
 
 void	read_moves(t_stack_list *stack_a, t_stack_list *stack_b)
@@ -62,6 +46,10 @@ void	read_moves(t_stack_list *stack_a, t_stack_list *stack_b)
 		else
 			i++;
 	}
+	if (is_sorted(stack_a) == 1 && stack_b->length == 0)
+		write(1, "OK\n", 3);
+	else
+		write(1, "KO\n", 3);
 }
 
 void	check_move(char *str, t_stack_list *stack_a, t_stack_list *stack_b)

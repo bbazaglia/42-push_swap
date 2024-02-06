@@ -46,8 +46,9 @@ void					print_error(void);
 
 // linked list functions
 t_stack_list			*create_stack(int argc, char **argv);
+void 					populate_stack(t_stack_list *stack, char **argv, int start_index);
 void					add_node(t_stack_list *stack, int value);
-void					clear_stack(t_stack_list *stack);
+void 					clear_stack(t_stack_list *stack);
 int						stack_length(t_stack_list *stack);
 void					copy_stack(t_stack_list *src, t_stack_list *dest);
 

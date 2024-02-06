@@ -12,23 +12,6 @@
 
 #include "push_swap.h"
 
-void	sort_stack(t_stack_list *stack_a, t_stack_list *stack_b)
-{
-	if (is_sorted(stack_a) == 1)
-	{
-		clear_stack(stack_a);
-		clear_stack(stack_b);
-		write(1, "The stack is already sorted\n", 28);
-		exit(0);
-	}
-	if (stack_a->length == 2)
-		sa(stack_a);
-	else if (stack_a->length == 3)
-		sort_three(stack_a);
-	else
-		sort_bigger(stack_a, stack_b);
-}
-
 int	is_sorted(t_stack_list *stack)
 {
 	t_stack_node	*current;
@@ -67,6 +50,37 @@ void	sort_bigger(t_stack_list *stack_a, t_stack_list *stack_b)
 	}
 	if (is_sorted(stack_a) == 0)
 		adjust_stack(stack_a);
+}
+
+void	populate_stack_b(t_stack_list *stack_a, t_stack_list *stack_b)
+{
+	int	len;
+	int	pushed;
+	int	i;
+
+	len = stack_a->length;
+	pushed = 0;
+	i = 0;
+	while (stack_a->length > 3 && i < len && pushed < len / 2)
+	{
+		if (stack_a->head->index <= len / 2)
+		{
+			pb(stack_a, stack_b);
+			if (!stack_b->tail)
+				stack_b->tail = stack_b->head;
+			pushed++;
+		}
+		else
+			ra(stack_a);
+		i++;
+	}
+	while (len - pushed > 3)
+	{
+		pb(stack_a, stack_b);
+		if (!stack_b->tail)
+			stack_b->tail = stack_b->head;
+		pushed++;
+	}
 }
 
 void	adjust_stack(t_stack_list *stack_a)

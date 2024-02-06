@@ -25,7 +25,22 @@ int	main(int argc, char **argv)
 	check_double(stack_a);
 	assign_index(stack_a);
 	sort_stack(stack_a, stack_b);
-	clear_stack(stack_a);
+ 	clear_stack(stack_a);
 	clear_stack(stack_b);
 	return (0);
+}
+
+void	sort_stack(t_stack_list *stack_a, t_stack_list *stack_b)
+{
+	if (is_sorted(stack_a) == 1)
+		return ;
+	else 
+	{
+		if (stack_a->length == 2)
+			sa(stack_a);
+		else if (stack_a->length == 3)
+			sort_three(stack_a);
+		else
+			sort_bigger(stack_a, stack_b);
+	}
 }
