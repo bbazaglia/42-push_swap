@@ -1,33 +1,20 @@
 {
+    "version": "0.2.0",
     "configurations": [
         {
-            "name": "C/C++: gcc build and debug active file",
+            "name": "C/C++: Debug a.out",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${fileDirname}/${fileBasenameNoExtension}",
+            "program": "${workspaceFolder}/a.out",
             "args": [
-                "53",
-                "27",
-                "55",
-                "28",
-                "81",
-                "38",
-                "17",
-                "94",
-                "31",
-                "5",
-                "46",
-                "21",
-                "3",
-                "2",
-                "7",
-                "71",
-                "45",
-                "33",
-                "-1"
+                "50", "15", "22", "27", "60", "-21", "-39", "-49", "-15", "54",
+                "91", "26", "-16", "93", "41", "51", "34", "-34", "42", "-9",
+                "77", "-32", "-50", "73", "-3", "88", "13", "76", "-11", "-37",
+                "56", "75", "-28", "-18", "18", "82", "0", "-2", "24", "95", "-42",
+                "87", "-10", "-35", "29", "36", "2", "16", "1", "-38"
             ],
             "stopAtEntry": false,
-            "cwd": "${fileDirname}",
+            "cwd": "${workspaceFolder}",
             "environment": [],
             "externalConsole": false,
             "MIMode": "gdb",
@@ -43,56 +30,8 @@
                     "ignoreFailures": true
                 }
             ],
-            "preLaunchTask": "C/C++: gcc build active file",
-            "miDebuggerPath": "/usr/bin/gdb"
-        },
-        {
-            "name": "C/C++: gcc-10 build and debug active file",
-            "type": "cppdbg",
-            "request": "launch",
-            "program": "${fileDirname}/${fileBasenameNoExtension}",
-            "args": [   
-                "10",
-                "90",
-                "21",
-                "1",
-                "5",
-                "7",
-                "9",
-                "0",
-                "-1",
-                "-4",
-                "-7",
-                "-52",
-                "52",
-                "29",
-                "30",
-                "26",
-                "-25",
-                "789",
-                "12",
-                "-27"
-            ],
-            "stopAtEntry": false,
-            "cwd": "${fileDirname}",
-            "environment": [],
-            "externalConsole": false,
-            "MIMode": "gdb",
-            "setupCommands": [
-                {
-                    "description": "Enable pretty-printing for gdb",
-                    "text": "-enable-pretty-printing",
-                    "ignoreFailures": true
-                },
-                {
-                    "description": "Set Disassembly Flavor to Intel",
-                    "text": "-gdb-set disassembly-flavor intel",
-                    "ignoreFailures": true
-                }
-            ],
-            "preLaunchTask": "C/C++: gcc-10 build active file",
+            "preLaunchTask": "C/C++: gcc build a.out",
             "miDebuggerPath": "/usr/bin/gdb"
         }
-    ],
-    "version": "2.0.0"
+    ]
 }

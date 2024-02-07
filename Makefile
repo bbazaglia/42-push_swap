@@ -19,8 +19,7 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror -g3 
 # -fsanitize=address
 
-VPATH = source ./source/moves ./source/sorting_algorithm  \
-		checker_bonus
+VPATH = sort stack checker_bonus
 
 INCLUDE = -I./include -I ./LIBFT/include
 
@@ -66,11 +65,14 @@ all: libft $(NAME)
 
 $(NAME): libft $(SRC_OBJ) 
 	@$(CC) $(CFLAGS) $(SRC_OBJ) $(LIBFT) -o $(NAME) 
-#	@echo "Compilation completed: $@"
+	@echo "Compilation completed: $@"
 
 bonus: libft $(SRC_OBJ_BONUS) 
 	@$(CC) $(CFLAGS) $(SRC_OBJ_BONUS) $(LIBFT) -o $(BONUS) 
-#	@echo "Compilation completed: $@"
+	@echo "Compilation completed: $@"
+
+a.out: libft $(SRC_OBJ_BONUS) 
+	@$(CC) $(CFLAGS) $(SRC_OBJ_BONUS) $(LIBFT) -o $@
 
 libft:
 	@make -C ./LIBFT
@@ -86,7 +88,7 @@ clean:
 
 fclean: clean
 	@make -C ./LIBFT fclean --silent 
-	@rm -f $(NAME) $(BONUS)
+	@rm -f $(NAME) $(BONUS) a.out
 	@echo "executable removed"
 
 re: fclean all
@@ -114,7 +116,7 @@ checker5: $(NAME) bonus
 
 checker100: $(NAME) bonus	
 	$(eval ARG = $(shell shuf -i 0-5000 -n 100))
-	./push_swap $(ARG) | ./checker $(ARG)
+	./push_swap $(ARG) | ./checker $(ARG) 
 	@echo -n "Instructions: "
 	@./push_swap $(ARG) | wc -l
 

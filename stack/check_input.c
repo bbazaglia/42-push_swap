@@ -17,18 +17,7 @@ char	**check_input(int argc, char **argv)
 	int	i;
 
 	if (argc == 2)
-	{
-		argv = ft_split(argv[1], ' ');
-		if (!argv || !*argv)
-			print_error();
-		i = 0;
-		while (argv[i])
-		{
-			check_characters(argv[i]);
-			check_limit(argv[i]);
-			i++;
-		}
-	}
+		argv = check_two_args(argv);
 	else if (argc >= 3)
 	{
 		i = 1;
@@ -41,6 +30,23 @@ char	**check_input(int argc, char **argv)
 	}
 	else
 		print_error();
+	return (argv);
+}
+
+char	**check_two_args(char **argv)
+{
+	int i;
+
+	argv = ft_split(argv[1], ' ');
+	if (!argv || !*argv)
+		print_error();
+	i = 0;
+	while (argv[i])
+	{
+		check_characters(argv[i]);
+		check_limit(argv[i]);
+		i++;
+	}
 	return (argv);
 }
 

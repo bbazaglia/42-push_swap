@@ -39,10 +39,12 @@ typedef struct s_stack_list
 
 // check functions
 char					**check_input(int argc, char **argv);
+char					**check_two_args(char **argv);
 void					check_characters(char *argv);
 void					check_limit(char *argv);
 void					check_double(t_stack_list *stack);
 void					print_error(void);
+
 
 // linked list functions
 t_stack_list			*create_stack(int argc, char **argv);

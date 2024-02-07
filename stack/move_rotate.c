@@ -12,6 +12,7 @@
 
 #include "push_swap.h"
 
+
 void	rotate(t_stack_list *stack)
 {
 	t_stack_node	*tmp;
@@ -19,24 +20,12 @@ void	rotate(t_stack_list *stack)
 	if (stack->head == NULL || stack->head->next == NULL)
 		return ;
 	tmp = stack->head;
-	if (stack->head->next->index == stack->tail->index)
-	{
-		stack->head = stack->head->next;
-		stack->head->prev = NULL;
-		stack->head->next = tmp;
-		stack->tail = tmp;
-		stack->tail->prev = stack->head;
-		stack->tail->next = NULL;
-	}
-	else
-	{
-		stack->head = stack->head->next;
-		stack->head->prev = NULL;
-		stack->tail->next = tmp;
-		tmp->prev = stack->tail;
-		tmp->next = NULL;
-		stack->tail = tmp;
-	}
+	stack->head = stack->head->next;
+	stack->head->prev = NULL;
+	tmp->prev = stack->tail;
+	tmp->next = NULL;
+	stack->tail->next = tmp;
+	stack->tail = tmp;
 }
 
 void	ra(t_stack_list *stack_a)

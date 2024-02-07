@@ -12,18 +12,19 @@
 
 #include "push_swap.h"
 
-int	is_sorted(t_stack_list *stack)
+void	sort_stack(t_stack_list *stack_a, t_stack_list *stack_b)
 {
-	t_stack_node	*current;
-
-	current = stack->head;
-	while (current && current->next)
+	if (is_sorted(stack_a) == 1)
+		return ;
+	else 
 	{
-		if (current->index > current->next->index)
-			return (0);
-		current = current->next;
+		if (stack_a->length == 2)
+			sa(stack_a);
+		else if (stack_a->length == 3)
+			sort_three(stack_a);
+		else
+			sort_bigger(stack_a, stack_b);
 	}
-	return (1);
 }
 
 void	sort_three(t_stack_list *stack)

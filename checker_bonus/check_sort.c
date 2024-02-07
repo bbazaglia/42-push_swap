@@ -54,6 +54,7 @@ void	read_moves(t_stack_list *stack_a, t_stack_list *stack_b)
 
 void	check_move(char *str, t_stack_list *stack_a, t_stack_list *stack_b)
 {
+	static int i;
 	if (ft_strncmp(str, "sa\n", 3) == 0)
 		sa_bonus(stack_a);
 	else if (ft_strncmp(str, "sb\n", 3) == 0)
@@ -78,4 +79,5 @@ void	check_move(char *str, t_stack_list *stack_a, t_stack_list *stack_b)
 		pb_bonus(stack_a, stack_b);
 	else
 		print_error();
+	i++;
 }

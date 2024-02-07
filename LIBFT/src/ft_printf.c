@@ -12,18 +12,6 @@
 
 #include "libft.h"
 
-int	ft_putstr(const char *str)
-{
-	int	count;
-
-	count = 0;
-	if (!str)
-		return (ft_putstr("(null)"));
-	while (str[count])
-		ft_putchar(str[count++]);
-	return (count);
-}
-
 int	print_format(char specifier, va_list ap)
 {
 	int	count;

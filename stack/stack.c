@@ -78,12 +78,26 @@ void clear_stack(t_stack_list *stack)
 
 void	copy_stack(t_stack_list *src, t_stack_list *dest)
 {
-	t_stack_node	*cur;
+	t_stack_node	*current_node;
 
-	cur = src->head;
-	while (cur != NULL)
+	current_node = src->head;
+	while (current_node != NULL)
 	{
-		add_node(dest, cur->value);
-		cur = cur->next;
+		add_node(dest, current_node->value);
+		current_node = current_node->next;
 	}
+}
+
+int	is_sorted(t_stack_list *stack)
+{
+	t_stack_node	*current;
+
+	current = stack->head;
+	while (current && current->next)
+	{
+		if (current->index > current->next->index)
+			return (0);
+		current = current->next;
+	}
+	return (1);
 }
