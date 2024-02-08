@@ -58,7 +58,6 @@ SRC = ft_putnbr_fd.c \
 	ft_putchar.c \
 	ft_putnbr.c \
 	ft_putstr.c \
-	print_error.c \
 	ft_abs.c \
 	ft_atol.c \
 	get_next_line.c 

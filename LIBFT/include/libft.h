@@ -85,6 +85,5 @@ char				*ft_rest_unfiltered(char *unfiltered_line);
 char				*get_next_line(int fd);
 long				ft_atol(char *str);
 int					ft_abs(int n);
-void				print_error(void);
 
 #endif
