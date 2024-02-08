@@ -42,9 +42,7 @@ char					**check_input(int argc, char **argv);
 char					**check_two_args(char **argv);
 void					check_characters(char *argv);
 void					check_limit(char *argv);
-void					check_double(t_stack_list *stack);
-void					print_error(void);
-
+void					check_duplicate(t_stack_list *stack, t_stack_node *current);
 
 // linked list functions
 t_stack_list			*create_stack(int argc, char **argv);
@@ -62,10 +60,8 @@ int						get_target_pos(t_stack_list *stack, int index_b,
 							int max_index, int target);
 int						get_lowest_index_pos(t_stack_list *stack);
 void					assign_index(t_stack_list *stack);
-t_stack_node			*merge_sorted_lists(t_stack_node *a, t_stack_node *b);
-void					find_middle_and_split(t_stack_node *source,
-							t_stack_node **front_ref, t_stack_node **back_ref);
-void					merge_sort(t_stack_node **head_ref);
+void 					find_highest_unassigned(t_stack_list *stack, \
+t_stack_node **highest);
 
 // operations
 void					push(t_stack_list *src, t_stack_list *dest);

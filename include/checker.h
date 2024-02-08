@@ -17,6 +17,7 @@
 
 void	check_move(char *str, t_stack_list *stack_a, t_stack_list *stack_b);
 void	read_moves(t_stack_list *stack_a, t_stack_list *stack_b);
+void    clear_and_exit(t_stack_list *stack_a, t_stack_list *stack_b);
 void	sa_bonus(t_stack_list *stack_a);
 void	sb_bonus(t_stack_list *stack_b);	
 void	ss_bonus(t_stack_list *stack_a, t_stack_list *stack_b);
