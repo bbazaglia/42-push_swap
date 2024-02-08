@@ -29,7 +29,7 @@ char	**check_input(int argc, char **argv)
 		}
 	}
 	else
-		print_error();
+		exit(write(2, "Error\n", 6));
 	return (argv);
 }
 
@@ -39,7 +39,7 @@ char	**check_two_args(char **argv)
 
 	argv = ft_split(argv[1], ' ');
 	if (!argv || !*argv)
-		print_error();
+		exit(write(2, "Error\n", 6));
 	i = 0;
 	while (argv[i])
 	{
@@ -53,13 +53,13 @@ char	**check_two_args(char **argv)
 void	check_characters(char *argv)
 {
 	if (*argv != '+' && *argv != '-' && ft_isdigit(*argv) == 0)
-		print_error();
+		exit(write(2, "Error\n", 6));
 	if ((*argv == '+' || *argv == '-') && ft_isdigit(*(argv + 1)) == 0)
-		print_error();
+		exit(write(2, "Error\n", 6));
 	while (*++argv)
 	{
 		if (ft_isdigit(*argv) == 0)
-			print_error();
+			exit(write(2, "Error\n", 6));
 	}
 }
 
@@ -69,25 +69,21 @@ void	check_limit(char *argv)
 
 	n = ft_atol(argv);
 	if (n > INT_MAX || n < INT_MIN)
-		print_error();
+		exit(write(2, "Error\n", 6));
 }
 
-// to do: check for doubles during sort
-void	check_double(t_stack_list *stack)
+void check_duplicate(t_stack_list *stack, t_stack_node *current)
 {
-	t_stack_node	*tmp;
-	t_stack_node	*tmp2;
+	t_stack_node *cur;
 
-	tmp = stack->head;
-	while (tmp)
+	cur = stack->head;
+	while (cur)
 	{
-		tmp2 = tmp->next;
-		while (tmp2)
+		if (cur != current && cur->value == current->value)
 		{
-			if (tmp->value == tmp2->value)
-				print_error();
-			tmp2 = tmp2->next;
+			clear_stack(stack);
+			exit(write(2, "Error\n", 6));
 		}
-		tmp = tmp->next;
+		cur = cur->next;
 	}
 }

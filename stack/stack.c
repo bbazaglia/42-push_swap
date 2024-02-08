@@ -18,7 +18,7 @@ t_stack_list	*create_stack(int argc, char **argv)
 
 	stack = (t_stack_list *)malloc(sizeof(t_stack_list));
 	if (!stack)
-		print_error();
+		exit(write(2, "Error\n", 6));
 	ft_memset(stack, 0, sizeof(t_stack_list));
 	if (argc == 2)
 		populate_stack(stack, argv, 0);
@@ -47,7 +47,10 @@ void	add_node(t_stack_list *stack, int value)
 
 	new_node = (t_stack_node *)malloc(sizeof(t_stack_node));
 	if (!new_node)
-		print_error();
+	{
+		clear_stack(stack);
+		exit(write(2, "Error\n", 6));
+	}
 	ft_memset(new_node, 0, sizeof(t_stack_node));
 	new_node->value = value;
 	new_node->next = NULL;
