@@ -27,6 +27,8 @@ void	push(t_stack_list *src_stack, t_stack_list *dest_stack)
 	if (dest_stack->head)
 		dest_stack->head->prev = src_stack->head;
 	dest_stack->head = src_stack->head;
+	if (!dest_stack->tail)
+		dest_stack->tail = dest_stack->head;
 	src_stack->head = src_second;
 	src_stack->length--;
 	dest_stack->length++;

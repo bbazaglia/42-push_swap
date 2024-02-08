@@ -67,8 +67,6 @@ void	populate_stack_b(t_stack_list *stack_a, t_stack_list *stack_b)
 		if (stack_a->head->index <= len / 2)
 		{
 			pb(stack_a, stack_b);
-			if (!stack_b->tail)
-				stack_b->tail = stack_b->head;
 			pushed++;
 		}
 		else
