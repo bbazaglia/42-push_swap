@@ -21,9 +21,8 @@ int	main(int argc, char **argv)
 	stack_b = NULL;
 	argv = check_input(argc, argv);
 	stack_a = create_stack(argc, argv);
-	stack_b = create_stack(0, NULL);
-	check_double(stack_a);
 	assign_index(stack_a);
+	stack_b = create_stack(0, NULL);
 	sort_stack(stack_a, stack_b);
  	clear_stack(stack_a);
 	clear_stack(stack_b);
