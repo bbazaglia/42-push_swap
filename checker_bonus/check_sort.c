@@ -21,9 +21,8 @@ int	main(int argc, char **argv)
 	stack_b = NULL;
 	argv = check_input(argc, argv);
 	stack_a = create_stack(argc, argv);
-	stack_b = create_stack(0, NULL);
-	check_double(stack_a);
 	assign_index(stack_a);
+	stack_b = create_stack(0, NULL);
 	read_moves(stack_a, stack_b);
 	clear_stack(stack_a);
 	clear_stack(stack_b);
@@ -78,6 +77,13 @@ void	check_move(char *str, t_stack_list *stack_a, t_stack_list *stack_b)
 	else if (ft_strncmp(str, "pb\n", 3) == 0)
 		pb_bonus(stack_a, stack_b);
 	else
-		print_error();
+		clear_and_exit(stack_a, stack_b);
 	i++;
+}
+
+void clear_and_exit(t_stack_list *stack_a, t_stack_list *stack_b)
+{
+	clear_stack(stack_a);
+	clear_stack(stack_b);
+	exit(write(2, "Error\n", 6));
 }
