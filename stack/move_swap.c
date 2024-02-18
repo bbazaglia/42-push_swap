@@ -12,19 +12,24 @@
 
 #include "push_swap.h"
 
-void	swap(t_stack_list *stack)
+void swap(t_stack_list *stack)
 {
-	int	tmp;
+    t_stack_node *first;
+    t_stack_node *second;
 
-	if (stack->head == NULL || stack->head->next == NULL)
-		return ;
-	tmp = stack->head->value;
-	stack->head->value = stack->head->next->value;
-	stack->head->next->value = tmp;
-	tmp = stack->head->index;
-	stack->head->index = stack->head->next->index;
-	stack->head->next->index = tmp;
+    if (stack->head == NULL || stack->head->next == NULL)
+        return;
+    second = stack->head;
+    first = stack->head->next;
+    second->next = first->next;
+    second->prev = first;
+    first->next = second;
+    first->prev = NULL;
+    if (second->next != NULL) 
+        second->next->prev = second;
+    stack->head = first;
 }
+
 
 void	sa(t_stack_list *stack_a)
 {
