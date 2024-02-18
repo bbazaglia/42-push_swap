@@ -26,6 +26,7 @@ INCLUDE = -I./include -I ./LIBFT/include
 LIBFT = ./LIBFT/libft.a
 
 SRC = assign_index.c \
+		free_args.c \
 		cheapest_move.c \
 		check_input.c \
 		get_cost.c \
@@ -39,6 +40,7 @@ SRC = assign_index.c \
 		sort.c 
 
 SRC_BONUS = assign_index.c \
+		free_args.c \
 		cheapest_move.c \
 		check_input.c \
 		get_cost.c \

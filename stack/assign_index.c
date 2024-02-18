@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void assign_index(t_stack_list *stack)
+void assign_index(t_stack_list *stack, int argc, char **argv)
 {
     int len;
 	t_stack_node *highest;
@@ -21,14 +21,14 @@ void assign_index(t_stack_list *stack)
     highest = NULL;
     while (len > 0)
     {
-        find_highest_unassigned(stack, &highest);
+        find_highest_unassigned(stack, &highest, argc, argv);
         if (highest)
             highest->index = len;
         len--;
     }
 }
 
-void find_highest_unassigned(t_stack_list *stack, t_stack_node **highest)
+void find_highest_unassigned(t_stack_list *stack, t_stack_node **highest, int argc, char **argv)
 {
     t_stack_node *cur;
 	int value;
@@ -41,7 +41,7 @@ void find_highest_unassigned(t_stack_list *stack, t_stack_node **highest)
             cur->index = 1;
         if (cur->value > value && cur->index == 0)
         {
-			check_duplicate(stack, cur);
+			check_duplicate(stack, cur, argc, argv);
             value = cur->value;
             *highest = cur;
             cur = stack->head; // reset cur to the head for rechecking

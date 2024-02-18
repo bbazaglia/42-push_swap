@@ -37,12 +37,15 @@ typedef struct s_stack_list
 	int					length;
 }						t_stack_list;
 
+
 // check functions
+void					free_args(int argc, char **argv);
 char					**check_input(int argc, char **argv);
-char					**check_two_args(char **argv);
-void					check_characters(char *argv);
-void					check_limit(char *argv);
-void					check_duplicate(t_stack_list *stack, t_stack_node *current);
+char					**check_two_args(int argc, char **argv);
+int						check_characters(char *argv);
+int						check_limit(char *argv);
+void					check_duplicate(t_stack_list *stack, t_stack_node *current, int argc, char **argv);
+void 					free_args(int argc, char **argv);
 
 // linked list functions
 t_stack_list			*create_stack(int argc, char **argv);
@@ -59,9 +62,9 @@ void					get_cur_pos(t_stack_list *stack);
 int						get_target_pos(t_stack_list *stack, int index_b,
 							int max_index, int target);
 int						get_lowest_index_pos(t_stack_list *stack);
-void					assign_index(t_stack_list *stack);
+void					assign_index(t_stack_list *stack, int argc, char **argv);
 void 					find_highest_unassigned(t_stack_list *stack, \
-t_stack_node **highest);
+t_stack_node **highest, int argc, char **argv);
 
 // operations
 void					push(t_stack_list *src, t_stack_list *dest);
