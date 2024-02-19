@@ -6,7 +6,7 @@
 /*   By: bbazagli <bbazagli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 14:25:29 by bbazagli          #+#    #+#             */
-/*   Updated: 2024/02/05 14:32:34 by bbazagli         ###   ########.fr       */
+/*   Updated: 2024/02/19 10:51:33 by bbazagli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	sort_stack(t_stack_list *stack_a, t_stack_list *stack_b)
 {
 	if (is_sorted(stack_a) == 1)
 		return ;
-	else 
+	else
 	{
 		if (stack_a->length == 2)
 			sa(stack_a);

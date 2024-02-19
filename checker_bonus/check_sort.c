@@ -6,7 +6,7 @@
 /*   By: bbazagli <bbazagli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 14:59:51 by bbazagli          #+#    #+#             */
-/*   Updated: 2024/02/05 15:55:15 by bbazagli         ###   ########.fr       */
+/*   Updated: 2024/02/19 10:55:32 by bbazagli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ void	read_moves(t_stack_list *stack_a, t_stack_list *stack_b)
 
 void	check_move(char *str, t_stack_list *stack_a, t_stack_list *stack_b)
 {
-	static int i;
 	if (ft_strncmp(str, "sa\n", 3) == 0)
 		sa_bonus(stack_a);
 	else if (ft_strncmp(str, "sb\n", 3) == 0)
@@ -79,10 +78,9 @@ void	check_move(char *str, t_stack_list *stack_a, t_stack_list *stack_b)
 		pb_bonus(stack_a, stack_b);
 	else
 		clear_and_exit(stack_a, stack_b);
-	i++;
 }
 
-void clear_and_exit(t_stack_list *stack_a, t_stack_list *stack_b)
+void	clear_and_exit(t_stack_list *stack_a, t_stack_list *stack_b)
 {
 	clear_stack(stack_a);
 	clear_stack(stack_b);

@@ -6,12 +6,11 @@
 /*   By: bbazagli <bbazagli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 14:23:29 by bbazagli          #+#    #+#             */
-/*   Updated: 2024/02/05 14:37:10 by bbazagli         ###   ########.fr       */
+/*   Updated: 2024/02/19 10:55:38 by bbazagli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
 
 void	rotate(t_stack_list *stack)
 {
@@ -20,8 +19,8 @@ void	rotate(t_stack_list *stack)
 	if (stack->head == NULL || stack->head->next == NULL)
 		return ;
 	tmp = stack->head;
-	stack->head = stack->head->next; 
-	stack->head->prev = NULL; 
+	stack->head = stack->head->next;
+	stack->head->prev = NULL;
 	tmp->prev = stack->tail;
 	tmp->next = NULL;
 	stack->tail->next = tmp;

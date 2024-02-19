@@ -6,7 +6,7 @@
 /*   By: bbazagli <bbazagli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 14:25:48 by bbazagli          #+#    #+#             */
-/*   Updated: 2024/02/05 14:30:05 by bbazagli         ###   ########.fr       */
+/*   Updated: 2024/02/19 10:56:40 by bbazagli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,10 @@ t_stack_list	*create_stack(int argc, char **argv)
 	return (stack);
 }
 
-void populate_stack(t_stack_list *stack, char **argv, int start_index)
+void	populate_stack(t_stack_list *stack, char **argv, int start_index)
 {
-	int i;
-	int value;
+	int	i;
+	int	value;
 
 	i = start_index;
 	while (argv[i])
@@ -63,11 +63,11 @@ void	add_node(t_stack_list *stack, int value)
 	stack->length++;
 }
 
-void clear_stack(t_stack_list *stack)
+void	clear_stack(t_stack_list *stack)
 {
-    t_stack_node *cur;
+	t_stack_node	*cur;
 
-    if (stack)
+	if (stack)
 	{
 		while (stack->head)
 		{
@@ -76,18 +76,6 @@ void clear_stack(t_stack_list *stack)
 			stack->head = cur;
 		}
 		free(stack);
-	}
-}
-
-void	copy_stack(t_stack_list *src, t_stack_list *dest)
-{
-	t_stack_node	*current_node;
-
-	current_node = src->head;
-	while (current_node != NULL)
-	{
-		add_node(dest, current_node->value);
-		current_node = current_node->next;
 	}
 }
 

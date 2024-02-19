@@ -6,7 +6,7 @@
 #    By: bbazagli <bbazagli@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/05 14:25:58 by bbazagli          #+#    #+#              #
-#    Updated: 2024/02/05 15:46:08 by bbazagli         ###   ########.fr        #
+#    Updated: 2024/02/19 10:44:04 by bbazagli         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,7 @@ SRC = assign_index.c \
 		move_reverse_rotate.c \
 		move_rotate.c \
 		move_swap.c \
-		push_swap.c \
+		main.c \
 		sort.c 
 
 SRC_BONUS = assign_index.c \

@@ -6,7 +6,7 @@
 /*   By: bbazagli <bbazagli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 14:22:25 by bbazagli          #+#    #+#             */
-/*   Updated: 2024/02/05 15:21:25 by bbazagli         ###   ########.fr       */
+/*   Updated: 2024/02/19 10:54:57 by bbazagli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,21 +37,23 @@ typedef struct s_stack_list
 	int					length;
 }						t_stack_list;
 
-
 // check functions
 void					free_args(int argc, char **argv);
 char					**check_input(int argc, char **argv);
 char					**check_two_args(int argc, char **argv);
 int						check_characters(char *argv);
 int						check_limit(char *argv);
-void					check_duplicate(t_stack_list *stack, t_stack_node *current, int argc, char **argv);
-void 					free_args(int argc, char **argv);
+void					check_duplicate(t_stack_list *stack,
+							t_stack_node *current,
+							int argc, char **argv);
+void					free_args(int argc, char **argv);
 
 // linked list functions
 t_stack_list			*create_stack(int argc, char **argv);
-void 					populate_stack(t_stack_list *stack, char **argv, int start_index);
+void					populate_stack(t_stack_list *stack, char **argv,
+							int start_index);
 void					add_node(t_stack_list *stack, int value);
-void 					clear_stack(t_stack_list *stack);
+void					clear_stack(t_stack_list *stack);
 int						stack_length(t_stack_list *stack);
 void					copy_stack(t_stack_list *src, t_stack_list *dest);
 
@@ -62,9 +64,10 @@ void					get_cur_pos(t_stack_list *stack);
 int						get_target_pos(t_stack_list *stack, int index_b,
 							int max_index, int target);
 int						get_lowest_index_pos(t_stack_list *stack);
-void					assign_index(t_stack_list *stack, int argc, char **argv);
-void 					find_highest_unassigned(t_stack_list *stack, \
-t_stack_node **highest, int argc, char **argv);
+void					assign_index(t_stack_list *stack, int argc,
+							char **argv);
+void					find_highest_unassigned(t_stack_list *stack,
+							t_stack_node **highest, int argc, char **argv);
 
 // operations
 void					push(t_stack_list *src, t_stack_list *dest);
@@ -101,13 +104,17 @@ void					do_move(t_stack_list *stack_a, t_stack_list *stack_b,
 // calculate cost
 void					get_cost(t_stack_list *stack_a, t_stack_list *stack_b);
 int						get_cheaper_cost(int cost_a, int cost_b);
-void					cost_is_positive(t_stack_list *stack_a, \
-t_stack_list *stack_b, int *cheapest_a, int *cheapest_b);
-void					cost_is_negative(t_stack_list *stack_a, \
-t_stack_list *stack_b, int *cheapest_a, int *cheapest_b);
-void					cost_a_is_positive(t_stack_list *stack_a, \
-t_stack_list *stack_b, int *cheapest_a, int *cheapest_b);
-void					cost_b_is_positive(t_stack_list *stack_a, \
-t_stack_list *stack_b, int *cheapest_a, int *cheapest_b);
+void					cost_is_positive(t_stack_list *stack_a,
+							t_stack_list *stack_b,
+							int *cheapest_a, int *cheapest_b);
+void					cost_is_negative(t_stack_list *stack_a,
+							t_stack_list *stack_b,
+							int *cheapest_a, int *cheapest_b);
+void					cost_a_is_positive(t_stack_list *stack_a,
+							t_stack_list *stack_b,
+							int *cheapest_a, int *cheapest_b);
+void					cost_b_is_positive(t_stack_list *stack_a,
+							t_stack_list *stack_b,
+							int *cheapest_a, int *cheapest_b);
 
 #endif

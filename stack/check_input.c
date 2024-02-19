@@ -6,7 +6,7 @@
 /*   By: bbazagli <bbazagli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 14:22:41 by bbazagli          #+#    #+#             */
-/*   Updated: 2024/02/05 14:41:10 by bbazagli         ###   ########.fr       */
+/*   Updated: 2024/02/19 10:47:57 by bbazagli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ char	**check_input(int argc, char **argv)
 
 char	**check_two_args(int argc, char **argv)
 {
-	int i;
+	int		i;
+	char	**split;
 
-	char **split;
 	split = ft_split(argv[1], ' ');
 	if (!split || !*split)
 		exit(write(2, "Error\n", 6));
@@ -78,9 +78,10 @@ int	check_limit(char *argv)
 	return (0);
 }
 
-void check_duplicate(t_stack_list *stack, t_stack_node *current, int argc, char **argv)
+void	check_duplicate(t_stack_list *stack, t_stack_node *current, int argc,
+		char **argv)
 {
-	t_stack_node *cur;
+	t_stack_node	*cur;
 
 	cur = stack->head;
 	while (cur)

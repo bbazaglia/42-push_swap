@@ -6,7 +6,7 @@
 /*   By: bbazagli <bbazagli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 14:12:05 by bbazagli          #+#    #+#             */
-/*   Updated: 2023/10/24 15:40:13 by bbazagli         ###   ########.fr       */
+/*   Updated: 2024/02/19 10:52:46 by bbazagli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*ft_read_fd(int fd, char *unfiltered_line, int *bytes_read)
 	char	*temp;
 
 	if (!unfiltered_line)
-		// unfiltered_line = ft_calloc(1, sizeof(char));
+		unfiltered_line = ft_calloc(1, sizeof(char));
 	buffer = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
 	*bytes_read = 1;
 	while (!ft_strchr(unfiltered_line, '\n') && *bytes_read != 0)
