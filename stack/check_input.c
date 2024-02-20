@@ -6,7 +6,7 @@
 /*   By: bbazagli <bbazagli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 14:22:41 by bbazagli          #+#    #+#             */
-/*   Updated: 2024/02/20 12:37:09 by bbazagli         ###   ########.fr       */
+/*   Updated: 2024/02/20 12:50:50 by bbazagli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ char	**check_two_args(int argc, char **argv)
 
 	split = ft_split(argv[1], ' ');
 	if (!split || !*split)
-		exit(1);
+		exit(write(2, "Error\n", 6));
 	i = 0;
 	while (split[i])
 	{
