@@ -8,7 +8,7 @@
             "args": [
                 "-fdiagnostics-color=always",
                 "-g",
-                "$(find ${workspaceFolder} -name '*.c' -not -path '${workspaceFolder}/sort/*')",  
+                "$(find ${workspaceFolder} -name '*.c' -not -path '${workspaceFolder}/checker_bonus/*')",  
                 "-I",
                 "${workspaceFolder}/include",
                 "-I",
