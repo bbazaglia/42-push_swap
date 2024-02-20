@@ -6,7 +6,7 @@
 /*   By: bbazagli <bbazagli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 14:22:41 by bbazagli          #+#    #+#             */
-/*   Updated: 2024/02/19 12:11:06 by bbazagli         ###   ########.fr       */
+/*   Updated: 2024/02/20 12:27:54 by bbazagli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ char	**check_input(int argc, char **argv)
 		}
 	}
 	else
-		exit(write(2, "Error\n", 6));
+		exit(1);
 	return (argv);
 }
 
