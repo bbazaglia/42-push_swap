@@ -6,7 +6,7 @@
 /*   By: bbazagli <bbazagli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 14:22:41 by bbazagli          #+#    #+#             */
-/*   Updated: 2024/02/19 10:47:57 by bbazagli         ###   ########.fr       */
+/*   Updated: 2024/02/19 12:11:06 by bbazagli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int	check_characters(char *argv)
 
 int	check_limit(char *argv)
 {
-	int	n;
+	long	n;
 
 	n = ft_atol(argv);
 	if (n > INT_MAX || n < INT_MIN)

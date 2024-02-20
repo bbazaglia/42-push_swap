@@ -6,7 +6,7 @@
 /*   By: bbazagli <bbazagli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 14:12:05 by bbazagli          #+#    #+#             */
-/*   Updated: 2024/02/19 10:52:46 by bbazagli         ###   ########.fr       */
+/*   Updated: 2024/02/20 10:37:26 by bbazagli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,11 @@ char	*get_next_line(int fd)
 	int			bytes_read;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
+	{
+		if (unfiltered_line)
+			free(unfiltered_line);
 		return (NULL);
+	}
 	unfiltered_line = ft_read_fd(fd, unfiltered_line, &bytes_read);
 	if (!unfiltered_line)
 		return (NULL);
@@ -111,5 +115,3 @@ char	*get_next_line(int fd)
 	}
 	return (next_line);
 }
-
-//

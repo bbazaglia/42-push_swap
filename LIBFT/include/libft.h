@@ -6,7 +6,7 @@
 /*   By: bbazagli <bbazagli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 10:32:39 by bbazagli          #+#    #+#             */
-/*   Updated: 2024/02/05 15:12:47 by bbazagli         ###   ########.fr       */
+/*   Updated: 2024/02/20 10:25:20 by bbazagli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <unistd.h>
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1024
+#  define BUFFER_SIZE 1042
 # endif
 
 typedef struct s_list

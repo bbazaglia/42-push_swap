@@ -6,7 +6,7 @@
 /*   By: bbazagli <bbazagli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 14:59:51 by bbazagli          #+#    #+#             */
-/*   Updated: 2024/02/19 10:55:32 by bbazagli         ###   ########.fr       */
+/*   Updated: 2024/02/20 10:41:33 by bbazagli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ int	main(int argc, char **argv)
 	stack_a = create_stack(argc, argv);
 	assign_index(stack_a, argc, argv);
 	stack_b = create_stack(0, NULL);
-	read_moves(stack_a, stack_b);
 	free_args(argc, argv);
+	read_moves(stack_a, stack_b);
 	clear_stack(stack_a);
 	clear_stack(stack_b);
 	return (0);
@@ -32,19 +32,15 @@ int	main(int argc, char **argv)
 
 void	read_moves(t_stack_list *stack_a, t_stack_list *stack_b)
 {
-	char	buffer[4];
-	int		i;
+	char	*line;
 
-	i = 0;
-	while (read(0, &buffer[i], 1) == 1)
+	line = "";
+	while (line)
 	{
-		if (buffer[i] == '\n')
-		{
-			check_move(buffer, stack_a, stack_b);
-			i = 0;
-		}
-		else
-			i++;
+		line = get_next_line(0);
+		if (line)
+			check_move(line, stack_a, stack_b);
+		free(line);
 	}
 	if (is_sorted(stack_a) == 1 && stack_b->length == 0)
 		write(1, "OK\n", 3);
@@ -77,11 +73,13 @@ void	check_move(char *str, t_stack_list *stack_a, t_stack_list *stack_b)
 	else if (ft_strncmp(str, "pb\n", 3) == 0)
 		pb_bonus(stack_a, stack_b);
 	else
-		clear_and_exit(stack_a, stack_b);
+		clear_and_exit(str, stack_a, stack_b);
 }
 
-void	clear_and_exit(t_stack_list *stack_a, t_stack_list *stack_b)
+void	clear_and_exit(char *str, t_stack_list *stack_a, t_stack_list *stack_b)
 {
+	get_next_line(-1);
+	free(str);
 	clear_stack(stack_a);
 	clear_stack(stack_b);
 	exit(write(2, "Error\n", 6));

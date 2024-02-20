@@ -7,7 +7,7 @@
             "request": "launch",
             "program": "${workspaceFolder}/a.out",
             "args": [
-                "15", "71", "93", "76", "98", "17", "12", "18", "68", "43", "29", "92"
+                "1", "0"
             ] ,
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
